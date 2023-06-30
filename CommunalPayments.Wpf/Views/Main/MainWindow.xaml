@@ -31,21 +31,24 @@
                 <StackPanel Orientation="Horizontal">
                     <DockPanel>
                         <Label Content="Год:"></Label>
-                        <ComboBox SelectedIndex="0">
-                            <sys:Int32>2021</sys:Int32>
-                            <sys:Int32>2022</sys:Int32>
-                            <sys:Int32>2023</sys:Int32>
+                        <ComboBox SelectedItem="{Binding CalculationYear}"
+                                  SelectedIndex="0">
+                            <sys:String>2021</sys:String>
+                            <sys:String>2022</sys:String>
+                            <sys:String>2023</sys:String>
                         </ComboBox>
                     </DockPanel>
                     <DockPanel>
                         <Label Content="Месяц:"></Label>
-                        <ComboBox SelectedIndex="0"
-                                  ItemsSource="{Binding Source={services:EnumBindingSourceExtensionService {x:Type enums:Months}}}"></ComboBox>
+                        <ComboBox SelectedItem="{Binding CalculationMonth}"
+                                  SelectedIndex="0"
+                                  ItemsSource="{Binding Source={services:EnumBindingSourceExtensionService {x:Type enums:Months}}}" />
                     </DockPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Количество проживающих: "></Label>
-                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                    <Label Content="Количество проживающих: " />
+                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                             Text="{Binding NumberResidents}" />
                 </StackPanel>
             </StackPanel>
         </GroupBox>
