@@ -4,12 +4,11 @@ namespace CommunalPayments.Wpf.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-
         #region Главное окно
 
         #region Свойства
 
-        #region Title : string - заголовок окна
+        #region Title : string - заголовок главного окна
 
         private string _title = "Калькулятор ЖКХ платежей";
 
@@ -19,13 +18,10 @@ namespace CommunalPayments.Wpf.ViewModels
             set => SetField(ref _title, value);
         }
 
-        #endregion Title : string - заголовок окна
+        #endregion Title : string - заголовок главного окна
 
-        #endregion
+        #endregion Свойства
 
-        #endregion
-
-
-
+        #endregion Главное окно
     }
 }
