@@ -7,6 +7,22 @@
         Title="{Binding Path=Title}" 
         Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Style="{StaticResource GroupBoxDefaultStyle}" 
+                  Grid.Column="0"
+                  Header="Показания приборов"
+                  Margin="5">
+            <StackPanel Orientation="Vertical">
+                <GroupBox Style="{StaticResource GroupBoxDefaultStyle}" 
+                          Header="Холодное водоснабжение"></GroupBox>
+                <GroupBox Style="{StaticResource GroupBoxDefaultStyle}" 
+                          Header="Горячее водоснабжение"></GroupBox>
+                <GroupBox Style="{StaticResource GroupBoxDefaultStyle}" 
+                          Header="Электроэнергия"></GroupBox>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>
