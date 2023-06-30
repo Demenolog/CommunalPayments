@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/GroupBox/GroupBoxDefaultStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/TextBox/TextBoxDefaultStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <viewModels:ViewModelLocator x:Key="Locator" />
         </ResourceDictionary>
