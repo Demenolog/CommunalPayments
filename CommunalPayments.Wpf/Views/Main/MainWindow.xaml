@@ -3,29 +3,57 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:enums="clr-namespace:CommunalPayments.Wpf.Infrastructure.Enums"
+        xmlns:services="clr-namespace:CommunalPayments.Wpf.Services"
+        xmlns:sys="clr-namespace:System;assembly=System.Runtime"
         mc:Ignorable="d"
         DataContext="{Binding Path=MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Path=Title}"
         ResizeMode="CanMinimize"
-        Height="450" 
+        Height="700" 
         Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.17*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="0.75*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
                   Grid.Column="0"
-                  Header="Показания приборов"
-                  Margin="5">
+                  Grid.ColumnSpan="2"
+                  Grid.Row="0"
+                  Header="Общая информация">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Количество проживающих: ">
-                    </Label>
-                    <TextBox Width="50"
-                             Height="15">
-                    </TextBox>
+                    <DockPanel>
+                        <Label Content="Год:"></Label>
+                        <ComboBox SelectedIndex="0">
+                            <sys:Int32>2021</sys:Int32>
+                            <sys:Int32>2022</sys:Int32>
+                            <sys:Int32>2023</sys:Int32>
+                        </ComboBox>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label Content="Месяц:"></Label>
+                        <ComboBox SelectedIndex="0"
+                                  ItemsSource="{Binding Source={services:EnumBindingSourceExtensionService {x:Type enums:Months}}}"></ComboBox>
+                    </DockPanel>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Количество проживающих: "></Label>
+                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
+                  Grid.Column="0"
+                  Grid.Row="1"
+                  Header="Показания приборов">
+            <StackPanel Orientation="Vertical">
                 <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
                           Header="Холодное водоснабжение">
                     <Grid>
@@ -112,7 +140,7 @@
                         <StackPanel Grid.Column="0"
                                     Orientation="Vertical">
                             <CheckBox Content="Приборы учета"></CheckBox>
-                            <Label Content="Дневная шкала:"></Label>
+                            <Label Content="Дневная шкала"></Label>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -127,7 +155,7 @@
                                     <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
                                 </DockPanel>
                             </Grid>
-                            <Label Content="Ночная шкала:"></Label>
+                            <Label Content="Ночная шкала"></Label>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
@@ -160,16 +188,88 @@
         </GroupBox>
         <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
                   Header="Расчет показаний"
-                  Grid.Column="1">
+                  Grid.Column="1"
+                  Grid.Row="1">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
-                    <StackPanel>
-                        <Label Content="Холодное водоснабжение:"></Label>
-
+                    <Label Content="Холодное водоснабжение"
+                           FontWeight="Black"></Label>
+                    <StackPanel Orientation="Vertical">
+                        <DockPanel>
+                            <Label Content="Объем потребления ХВС: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Тариф: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Начисления за ХВС: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                    </StackPanel>
+                    <Label Content="Горячее водоснабжение"
+                           FontWeight="Black"></Label>
+                    <StackPanel Orientation="Vertical">
+                        <DockPanel>
+                            <Label Content="Объем потребления «ГВС Теплоноситель»:"></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Объем потребления «ГВС Тепловая энергия»:"></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Норматив на подогрев: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Тариф: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Начисления за ГВС: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                    </StackPanel>
+                    <Label Content="Электроэнергия"
+                           FontWeight="Black"></Label>
+                    <StackPanel Orientation="Vertical">
+                        <DockPanel>
+                            <Label Content="Общий объем потребления:"></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Дневной объем потребления:"></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Ночной объем потребления:"></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Дневной тариф: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Ночной тариф: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Начисления за электроэнергию: "></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
+                    </StackPanel>
+                    <Label Content="Итого"
+                           FontWeight="Black"></Label>
+                    <StackPanel Orientation="Vertical">
+                        <DockPanel>
+                            <Label Content="Общая сумма начислений:"></Label>
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                        </DockPanel>
                     </StackPanel>
                 </StackPanel>
             </Grid>
