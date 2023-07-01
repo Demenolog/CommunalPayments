@@ -269,7 +269,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region NormPerPersonEnergy : string - Норма потребления на человека для ЭЭ
 
-        private string _normPerPersonEnergy = "Default";
+        private string _normPerPersonEnergy = ElectricPowerSupplyConstans.GetNormPerPersonEnergy().ToString();
 
         public string NormPerPersonEnergy
         {
@@ -489,7 +489,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region RateEnergyDay : string - Дневной тариф для ЭЭ
 
-        private string _rateEnergyDay;
+        private string _rateEnergyDay = ElectricPowerSupplyConstans.GetRateEnergyDay().ToString();
 
         public string RateEnergyDay
         {
@@ -501,7 +501,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region RateEnergyNight : string - Ночной тариф для ЭЭ
 
-        private string _rateEnergyNight;
+        private string _rateEnergyNight = ElectricPowerSupplyConstans.GetRateEnergyNight().ToString();
 
         public string RateEnergyNight
         {
@@ -513,7 +513,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region RateEnergyGeneral : string - Общий тариф для ЭЭ
 
-        private string _rateEnergyGeneral;
+        private string _rateEnergyGeneral = ElectricPowerSupplyConstans.GetRateEnergyGeneral().ToString();
 
         public string RateEnergyGeneral
         {
