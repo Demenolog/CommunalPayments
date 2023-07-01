@@ -1,4 +1,5 @@
-﻿using CommunalPayments.Wpf.ViewModels.Base;
+﻿using CommunalPayments.Wpf.Infrastructure.Constans;
+using CommunalPayments.Wpf.ViewModels.Base;
 
 namespace CommunalPayments.Wpf.ViewModels
 {
@@ -132,7 +133,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region NormPerPersonCold : string - Норма потребления на человека для ХВС
 
-        private string _normPerPersonCold = "Default";
+        private string _normPerPersonCold = ColdWaterSupplyConstans.GetStandardVolume().ToString();
 
         public string NormPerPersonCold
         {
@@ -336,7 +337,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region RateCold : string - Тариф для ХВС
 
-        private string _rateCold;
+        private string _rateCold = ColdWaterSupplyConstans.GetRate().ToString();
 
         public string RateCold
         {
