@@ -10,7 +10,7 @@
         DataContext="{Binding Path=MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Path=Title}"
         ResizeMode="CanMinimize"
-        Height="700" 
+        Height="800" 
         Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -218,76 +218,96 @@
                            FontWeight="Black"></Label>
                     <StackPanel Orientation="Vertical">
                         <DockPanel>
-                            <Label Content="Объем потребления ХВС: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Объем потребления ХВС:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ConsumptionValueCold}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Тариф: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Тариф:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding RateCold}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Начисления за ХВС: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Начисления за ХВС:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ServiceChargesCold}"/>
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Горячее водоснабжение"
-                           FontWeight="Black"></Label>
+                           FontWeight="Black" />
                     <StackPanel Orientation="Vertical">
                         <DockPanel>
-                            <Label Content="Объем потребления «ГВС Теплоноситель»:"></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Объем потребления «ГВС Теплоноситель»:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ConsumptionValueHotHeatCarrier}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Объем потребления «ГВС Тепловая энергия»:"></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Объем потребления «ГВС Тепловая энергия»:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ConsumptionValueHotHeatEnergy}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Норматив на подогрев: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Норматив на подогрев" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding HeatingStandard}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Тариф: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Тариф:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding RateHot}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Начисления за ГВС: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Начисления за ГВС:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ServiceChargesHot}"/>
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Электроэнергия"
-                           FontWeight="Black"></Label>
+                           FontWeight="Black" />
                     <StackPanel Orientation="Vertical">
                         <DockPanel>
-                            <Label Content="Общий объем потребления:"></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Общий объем потребления:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ConsumptionValueEnergyGeneral}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Дневной объем потребления:"></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Дневной объем потребления:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ConsumptionValueEnergyDay}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Ночной объем потребления:"></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Ночной объем потребления:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ConsumptionValueEnergyNight}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Дневной тариф: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Дневной тариф: " />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding RateEnergyDay}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Ночной тариф: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Ночной тариф:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding RateEnergyNight}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Начисления за электроэнергию: "></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Общий тариф:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding RateEnergyGeneral}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Начисления за ЭЭ:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ServiceChargesEnergy}"/>
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Итого"
-                           FontWeight="Black"></Label>
+                           FontWeight="Black" />
                     <StackPanel Orientation="Vertical">
                         <DockPanel>
-                            <Label Content="Общая сумма начислений:"></Label>
-                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                            <Label Content="Общая сумма начислений:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding ServiceChargesTotal}"/>
                         </DockPanel>
                     </StackPanel>
                 </StackPanel>

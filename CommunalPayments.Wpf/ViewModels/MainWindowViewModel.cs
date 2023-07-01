@@ -317,5 +317,217 @@ namespace CommunalPayments.Wpf.ViewModels
         #endregion Подблок - Электроэнергия
 
         #endregion Блок - Показания приборов
+
+        #region Блок - Расчёт показаний
+
+        #region Раздел - ХВС
+
+        #region ConsumptionValueCold : string - Объём потребления ХВС
+
+        private string _consumptionValueCold;
+
+        public string ConsumptionValueCold
+        {
+            get => _consumptionValueCold;
+            set => SetField(ref _consumptionValueCold, value);
+        }
+
+        #endregion ConsumptionValueCold : string - Объём потребления ХВС
+
+        #region RateCold : string - Тариф для ХВС
+
+        private string _rateCold;
+
+        public string RateCold
+        {
+            get => _rateCold;
+            set => SetField(ref _rateCold, value);
+        }
+
+        #endregion RateCold : string - Тариф для ХВС
+
+        #region ServiceChargesCold : string - Начисления за ХВС
+
+        private string _serviceChargesCold;
+
+        public string ServiceChargesCold
+        {
+            get => _serviceChargesCold;
+            set => SetField(ref _serviceChargesCold, value);
+        }
+
+        #endregion ServiceChargesCold : string - Начисления за ХВС
+
+        #endregion Раздел - ХВС
+
+        #region Раздел - ГВС
+
+        #region ConsumptionValueHotHeatCarrier : string - Объем потребления «ГВС Теплоноситель»
+
+        private string _consumptionValueHotHeatCarrier;
+
+        public string ConsumptionValueHotHeatCarrier
+        {
+            get => _consumptionValueHotHeatCarrier;
+            set => SetField(ref _consumptionValueHotHeatCarrier, value);
+        }
+
+        #endregion ConsumptionValueHotHeatCarrier : string - Объем потребления «ГВС Теплоноситель»
+
+        #region ConsumptionValueHotHeatEnergy : string - Объем потребления «ГВС Тепловая энергия»
+
+        private string _consumptionValueHotHeatEnergy;
+
+        public string ConsumptionValueHotHeatEnergy
+        {
+            get => _consumptionValueHotHeatEnergy;
+            set => SetField(ref _consumptionValueHotHeatEnergy, value);
+        }
+
+        #endregion ConsumptionValueHotHeatEnergy : string - Объем потребления «ГВС Тепловая энергия»
+
+        #region HeatingStandard : string - Норматив на подогрев
+
+        private string _heatingStandard;
+
+        public string HeatingStandard
+        {
+            get => _heatingStandard;
+            set => SetField(ref _heatingStandard, value);
+        }
+
+        #endregion HeatingStandard : string - Норматив на подогрев
+
+        #region RateHot : string - Тариф для ГВС
+
+        private string _rateHot;
+
+        public string RateHot
+        {
+            get => _rateHot;
+            set => SetField(ref _rateHot, value);
+        }
+
+        #endregion RateHot : string - Тариф для ГВС
+
+        #region ServiceChargesHot : string - Начисления за ГВС
+
+        private string _serviceChargesHot;
+
+        public string ServiceChargesHot
+        {
+            get => _serviceChargesHot;
+            set => SetField(ref _serviceChargesHot, value);
+        }
+
+        #endregion ServiceChargesHot : string - Начисления за ГВС
+
+        #endregion Раздел - ГВС
+
+        #region Раздел - ЭЭ
+
+        #region ConsumptionValueEnergyGeneral : string - Общий объём потребления ЭЭ
+
+        private string _consumptionValueEnergyGeneral;
+
+        public string ConsumptionValueEnergyGeneral
+        {
+            get => _consumptionValueEnergyGeneral;
+            set => SetField(ref _consumptionValueEnergyGeneral, value);
+        }
+
+        #endregion ConsumptionValueEnergyGeneral : string - Общий объём потребления ЭЭ
+
+        #region ConsumptionValueEnergyDay : string - Дневной объём потребления ЭЭ
+
+        private string _consumptionValueEnergyDay;
+
+        public string ConsumptionValueEnergyDay
+        {
+            get => _consumptionValueEnergyDay;
+            set => SetField(ref _consumptionValueEnergyDay, value);
+        }
+
+        #endregion ConsumptionValueEnergyDay : string - Дневной объём потребления ЭЭ
+
+        #region ConsumptionValueEnergyNight : string - Ночной объём потребления ЭЭ
+
+        private string _consumptionValueEnergyNight;
+
+        public string ConsumptionValueEnergyNight
+        {
+            get => _consumptionValueEnergyNight;
+            set => SetField(ref _consumptionValueEnergyNight, value);
+        }
+
+        #endregion ConsumptionValueEnergyNight : string - Ночной объём потребления ЭЭ
+
+        #region RateEnergyDay : string - Дневной тариф для ЭЭ
+
+        private string _rateEnergyDay;
+
+        public string RateEnergyDay
+        {
+            get => _rateEnergyDay;
+            set => SetField(ref _rateEnergyDay, value);
+        }
+
+        #endregion RateEnergyDay : string - Дневной тариф для ЭЭ
+
+        #region RateEnergyNight : string - Ночной тариф для ЭЭ
+
+        private string _rateEnergyNight;
+
+        public string RateEnergyNight
+        {
+            get => _rateEnergyNight;
+            set => SetField(ref _rateEnergyNight, value);
+        }
+
+        #endregion RateEnergyNight : string - Ночной тариф для ЭЭ
+
+        #region RateEnergyGeneral : string - Общий тариф для ЭЭ
+
+        private string _rateEnergyGeneral;
+
+        public string RateEnergyGeneral
+        {
+            get => _rateEnergyGeneral;
+            set => SetField(ref _rateEnergyGeneral, value);
+        }
+
+        #endregion RateEnergyGeneral : string - Общий тариф для ЭЭ
+
+        #region ServiceChargesEnergy : string - Начисления за ЭЭ
+
+        private string _serviceChargesEnergy;
+
+        public string ServiceChargesEnergy
+        {
+            get => _serviceChargesEnergy;
+            set => SetField(ref _serviceChargesEnergy, value);
+        }
+
+        #endregion ServiceChargesEnergy : string - Начисления за ЭЭ
+
+        #endregion Раздел - ЭЭ
+
+        #region Раздел - Итого
+
+        #region ServiceChargesTotal : string - Общая сумма начислений
+
+        private string _serviceChargesTotal;
+
+        public string ServiceChargesTotal
+        {
+            get => _serviceChargesTotal;
+            set => SetField(ref _serviceChargesTotal, value);
+        }
+
+        #endregion ServiceChargesTotal : string - Общая сумма начислений
+
+        #endregion
+
+        #endregion Блок - Расчёт показаний
     }
 }
