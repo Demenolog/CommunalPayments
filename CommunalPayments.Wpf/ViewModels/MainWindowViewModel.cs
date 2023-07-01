@@ -144,6 +144,80 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion Подблок - Холодное водоснабжение
 
+        #region Подблок - Горячее водоснабжение
+
+        #region IsMeteringDevicesHotSelected : bool - Состояние чекбокса приборов для ГВС
+
+        private bool _isMeteringDevicesHotSelected = true;
+
+        public bool IsMeteringDevicesHotSelected
+        {
+            get => _isMeteringDevicesHotSelected;
+            set
+            {
+                SetField(ref _isMeteringDevicesHotSelected, value);
+                SetField(ref _isStandardVolumeHotSelected, !_isMeteringDevicesHotSelected);
+                OnPropertyChanged(nameof(IsStandardVolumeHotSelected));
+            }
+        }
+
+        #endregion IsMeteringDevicesHotSelected : bool - Состояние чекбокса приборов для ГВС
+
+        #region IsStandardVolumeHotSelected : bool - Состояние чекбокса нормативного объёма для ГВС
+
+        private bool _isStandardVolumeHotSelected;
+
+        public bool IsStandardVolumeHotSelected
+        {
+            get => _isStandardVolumeHotSelected;
+            set
+            {
+                SetField(ref _isStandardVolumeHotSelected, value);
+                SetField(ref _isMeteringDevicesHotSelected, !_isStandardVolumeHotSelected);
+                OnPropertyChanged(nameof(IsMeteringDevicesHotSelected));
+            }
+        }
+
+        #endregion IsStandardVolumeHotSelected : bool - Состояние чекбокса нормативного объёма для ГВС
+
+        #region InstrumentCurrentValueHot : string - Текущие значения счётчика для ГВС
+
+        private string _instrumentCurrentValueHot;
+
+        public string InstrumentCurrentValueHot
+        {
+            get => _instrumentCurrentValueHot;
+            set => SetField(ref _instrumentCurrentValueHot, value);
+        }
+
+        #endregion InstrumentCurrentValueHot : string - Текущие значения счётчика для ГВС
+
+        #region InstrumentPreviousValueHot : string - Предыдущие значение счётчика для ГВС
+
+        private string _instrumentPreviousValueHot = "lastValFromDb";
+
+        public string InstrumentPreviousValueHot
+        {
+            get => _instrumentPreviousValueHot;
+            set => SetField(ref _instrumentPreviousValueHot, value);
+        }
+
+        #endregion InstrumentPreviousValueHot : string - Предыдущие значение счётчика для ГВС
+
+        #region NormPerPersonHot : string - Норма потребления на человека для ГВС
+
+        private string _normPerPersonHot = "Default";
+
+        public string NormPerPersonHot
+        {
+            get => _normPerPersonHot;
+            set => SetField(ref _normPerPersonHot, value);
+        }
+
+        #endregion NormPerPersonHot : string - Норма потребления на человека для ГВС
+
+        #endregion Подблок - Горячее водоснабжение
+
         #endregion Блок - Показания приборов
     }
 }
