@@ -8,10 +8,10 @@ namespace CommunalPayments.Wpf.Infrastructure.Constans
 {
     internal static class ColdWaterSupplyConstans
     {
-        private const decimal StandardVolume = 4.85M;
+        private const decimal NormPerPerson = 4.85M;
         private const decimal Rate = 35.78M;
 
-        public static decimal GetStandardVolume() => StandardVolume;
+        public static decimal GetNormPerPerson() => NormPerPerson;
         public static decimal GetRate() => Rate;
     }
 }
