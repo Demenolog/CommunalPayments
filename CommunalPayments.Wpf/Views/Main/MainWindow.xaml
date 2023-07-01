@@ -265,32 +265,32 @@
                     <Label Content="Электроэнергия"
                            FontWeight="Black" />
                     <StackPanel Orientation="Vertical">
-                        <DockPanel>
+                        <DockPanel IsEnabled="{Binding IsStandardVolumeEnergySelected}">
                             <Label Content="Общий объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                      Text="{Binding ConsumptionValueEnergyGeneral}"/>
                         </DockPanel>
-                        <DockPanel>
+                        <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Дневной объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                      Text="{Binding ConsumptionValueEnergyDay}"/>
                         </DockPanel>
-                        <DockPanel>
+                        <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Ночной объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                      Text="{Binding ConsumptionValueEnergyNight}"/>
                         </DockPanel>
-                        <DockPanel>
+                        <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Дневной тариф: " />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                      Text="{Binding RateEnergyDay}"/>
                         </DockPanel>
-                        <DockPanel>
+                        <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Ночной тариф:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                      Text="{Binding RateEnergyNight}"/>
                         </DockPanel>
-                        <DockPanel>
+                        <DockPanel IsEnabled="{Binding IsStandardVolumeEnergySelected}">
                             <Label Content="Общий тариф:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                      Text="{Binding RateEnergyGeneral}"/>
