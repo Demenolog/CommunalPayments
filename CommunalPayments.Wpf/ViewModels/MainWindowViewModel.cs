@@ -133,7 +133,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region NormPerPersonCold : string - Норма потребления на человека для ХВС
 
-        private string _normPerPersonCold = ColdWaterSupplyConstans.GetStandardVolume().ToString();
+        private string _normPerPersonCold = ColdWaterSupplyConstans.GetNormPerPerson().ToString();
 
         public string NormPerPersonCold
         {
@@ -205,17 +205,29 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion InstrumentPreviousValueHot : string - Предыдущие значение счётчика для ГВС
 
-        #region NormPerPersonHot : string - Норма потребления на человека для ГВС
+        #region NormPerPersonHotHeatCarrier : string - Норма потребления на человека для «ГВС Теплоноситель»
 
-        private string _normPerPersonHot = "Default";
+        private string _normPerPersonHotHeatCarrier = HotWaterSupplyConstans.GetNormPerPersonHeatCarrier().ToString();
 
-        public string NormPerPersonHot
+        public string NormPerPersonHotHeatCarrier
         {
-            get => _normPerPersonHot;
-            set => SetField(ref _normPerPersonHot, value);
+            get => _normPerPersonHotHeatCarrier;
+            set => SetField(ref _normPerPersonHotHeatCarrier, value);
         }
 
-        #endregion NormPerPersonHot : string - Норма потребления на человека для ГВС
+        #endregion NormPerPersonHotHeatCarrier : string - Норма потребления на человека для «ГВС Теплоноситель»
+
+        #region NormPerPersonHotHeatEnergy : string - Норма потребления на человека для «ГВС Теплоноситель»
+
+        private string _normPerPersonHotHeatEnergy = HotWaterSupplyConstans.GetNormPerPersonHeatEnergy().ToString();
+
+        public string NormPerPersonHotHeatEnergy
+        {
+            get => _normPerPersonHotHeatEnergy;
+            set => SetField(ref _normPerPersonHotHeatEnergy, value);
+        }
+
+        #endregion NormPerPersonHotHeatEnergy : string - Норма потребления на человека для «ГВС Теплоноситель»
 
         #endregion Подблок - Горячее водоснабжение
 
@@ -399,17 +411,29 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion HeatingStandard : string - Норматив на подогрев
 
-        #region RateHot : string - Тариф для ГВС
+        #region RateHotHeatCarrier : string - Тариф для «ГВС Теплоноситель»
 
-        private string _rateHot;
+        private string _rateHotHeatCarrier = HotWaterSupplyConstans.GetRateHeatCarrier().ToString();
 
-        public string RateHot
+        public string RateHotHeatCarrier
         {
-            get => _rateHot;
-            set => SetField(ref _rateHot, value);
+            get => _rateHotHeatCarrier;
+            set => SetField(ref _rateHotHeatCarrier, value);
         }
 
-        #endregion RateHot : string - Тариф для ГВС
+        #endregion RateHotHeatCarrier : string - Тариф для «ГВС Теплоноситель»
+
+        #region RateHotHeatEnergy : string - Тариф для «ГВС Тепловая энергия»
+
+        private string _rateHotHeatEnergy = HotWaterSupplyConstans.GetRateHeatEnergy().ToString();
+
+        public string RateHotHeatEnergy
+        {
+            get => _rateHotHeatEnergy;
+            set => SetField(ref _rateHotHeatEnergy, value);
+        }
+
+        #endregion RateHotHeatEnergy : string - Тариф для «ГВС Тепловая энергия»
 
         #region ServiceChargesHot : string - Начисления за ГВС
 

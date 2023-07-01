@@ -132,9 +132,16 @@
                                       IsChecked="{Binding IsStandardVolumeHotSelected, UpdateSourceTrigger=PropertyChanged}"/>
                             <DockPanel Grid.Row="1"
                                        IsEnabled="{Binding IsStandardVolumeHotSelected}">
-                                <Label Content="Норматив за человека" />
+                                <Label Content="«ГВС Теплоноситель»"/>
                                 <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                         Text="{Binding NormPerPersonHot}">
+                                         Text="{Binding  NormPerPersonHotHeatCarrier}">
+                                </TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1"
+                                       IsEnabled="{Binding IsStandardVolumeHotSelected}">
+                                <Label Content="«ГВС Тепловая энергия»"/>
+                                <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                         Text="{Binding  NormPerPersonHotHeatEnergy}">
                                 </TextBox>
                             </DockPanel>
                         </StackPanel>
@@ -252,9 +259,14 @@
                                      Text="{Binding HeatingStandard}"/>
                         </DockPanel>
                         <DockPanel>
-                            <Label Content="Тариф:" />
+                            <Label Content="Тариф «ГВС Теплоноситель»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateHot}"/>
+                                     Text="{Binding RateHotHeatCarrier}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <Label Content="Тариф «ГВС Тепловая энергия»:" />
+                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                     Text="{Binding RateHotHeatEnergy}"/>
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за ГВС:" />

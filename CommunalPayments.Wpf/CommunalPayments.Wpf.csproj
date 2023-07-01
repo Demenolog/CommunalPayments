@@ -216,6 +216,8 @@
     </Compile>
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\LambdaCommand.cs" />
+    <Compile Include="Infrastructure\Constans\ColdWaterSupplyConstans.cs" />
+    <Compile Include="Infrastructure\Constans\HotWaterSupplyConstans.cs" />
     <Compile Include="Infrastructure\Enums\Months.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Services\EnumBindingSourceExtensionService.cs" />
