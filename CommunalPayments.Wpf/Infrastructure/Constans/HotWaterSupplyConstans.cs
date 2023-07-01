@@ -14,8 +14,11 @@ namespace CommunalPayments.Wpf.Infrastructure.Constans
         private const decimal RateHeatEnergy = 998.69M;
 
         public static decimal GetNormPerPersonHeatCarrier() => NormPerPersonHeatCarrier;
+
         public static decimal GetNormPerPersonHeatEnergy() => NormPerPersonHeatEnergy;
+
         public static decimal GetRateHeatCarrier() => RateHeatCarrier;
+
         public static decimal GetRateHeatEnergy() => RateHeatEnergy;
     }
 }
