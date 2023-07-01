@@ -66,32 +66,36 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0"
                                     Orientation="Vertical">
-                            <CheckBox Content="Приборы учета"></CheckBox>
-                            <Grid>
+                            <CheckBox Content="Приборы учета"
+                                      IsChecked="{Binding IsMeteringDevicesColdSelected, UpdateSourceTrigger=PropertyChanged}">
+                            </CheckBox>
+                            <Grid IsEnabled="{Binding IsMeteringDevicesColdSelected}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <DockPanel Grid.Row="0">
                                     <Label Content="Текущие показания:"></Label>
-                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                             Text="{Binding InstrumentCurrentValueCold}" />
                                 </DockPanel>
                                 <DockPanel Grid.Row="1">
                                     <Label Content="Предыдущие показания:"></Label>
-                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"></TextBox>
+                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                             Text="{Binding InstrumentPreviousValueCold}"/>
                                 </DockPanel>
                             </Grid>
                         </StackPanel>
                         <StackPanel Grid.Column="1"
                                     Orientation="Vertical">
-                            <CheckBox Content="Нормативный объем"></CheckBox>
-                            <StackPanel Grid.Row="1"
-                                        Orientation="Horizontal">
+                            <CheckBox Content="Нормативный объем"
+                                      IsChecked="{Binding IsStandardVolumeColdSelected, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                            <DockPanel Grid.Row="1"
+                                       IsEnabled="{Binding IsStandardVolumeColdSelected}">
                                 <Label Content="Норматив за человека"></Label>
-                                <TextBox Width="50"
-                                         Height="20">
-                                </TextBox>
-                            </StackPanel>
+                                <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                         Text="{Binding NormPerPersonCold}"/>
+                            </DockPanel>
                         </StackPanel>
                     </Grid>
                 </GroupBox>

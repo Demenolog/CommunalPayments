@@ -63,9 +63,87 @@ namespace CommunalPayments.Wpf.ViewModels
         }
 
         #endregion NumberResidents : string - Количество проживающих на момент расчёта
-       
-        #endregion
+
+        #endregion Свойства
 
         #endregion Блок - Общая информация
+
+        #region Блок - Показания приборов
+
+        #region Подблок - Холодное водоснабжение
+
+        #region IsMeteringDevicesColdSelected : bool - Состояние чекбокса приборов для ХВС
+
+        private bool _isMeteringDevicesColdSelected = true;
+
+        public bool IsMeteringDevicesColdSelected
+        {
+            get => _isMeteringDevicesColdSelected;
+            set
+            {
+                SetField(ref _isMeteringDevicesColdSelected, value);
+                SetField(ref _isStandardVolumeColdSelected, !_isMeteringDevicesColdSelected);
+                OnPropertyChanged(nameof(IsStandardVolumeColdSelected));
+            }
+        }
+
+        #endregion IsMeteringDevicesColdSelected : bool - Состояние чекбокса приборов для ХВС
+
+        #region IsStandardVolumeColdSelected : bool - Состояние чекбокса нормативного объёма для ХВС
+
+        private bool _isStandardVolumeColdSelected;
+
+        public bool IsStandardVolumeColdSelected
+        {
+            get => _isStandardVolumeColdSelected;
+            set
+            {
+                SetField(ref _isStandardVolumeColdSelected, value);
+                SetField(ref _isMeteringDevicesColdSelected, !_isStandardVolumeColdSelected);
+                OnPropertyChanged(nameof(IsMeteringDevicesColdSelected));
+            }
+        }
+
+        #endregion IsStandardVolumeColdSelected : bool - Состояние чекбокса нормативного объёма для ХВС
+
+        #region InstrumentCurrentValueCold : string - Текущие значения счётчика для ХВС
+
+        private string _instrumentCurrentValueCold;
+
+        public string InstrumentCurrentValueCold
+        {
+            get => _instrumentCurrentValueCold;
+            set => SetField(ref _instrumentCurrentValueCold, value);
+        }
+
+        #endregion InstrumentCurrentValueCold : string - Текущие значения счётчика для ХВС
+
+        #region InstrumentPreviousValueCold : string - Предыдущие значение счётчика для ХВС
+
+        private string _instrumentPreviousValueCold = "lastValFromDb";
+
+        public string InstrumentPreviousValueCold
+        {
+            get => _instrumentPreviousValueCold;
+            set => SetField(ref _instrumentPreviousValueCold, value);
+        }
+
+        #endregion InstrumentPreviousValueCold : string - Предыдущие значение счётчика для ХВС
+
+        #region NormPerPersonCold : string - Норма потребления на человека для ХВС
+
+        private string _normPerPersonCold = "Default";
+
+        public string NormPerPersonCold
+        {
+            get => _normPerPersonCold;
+            set => SetField(ref _normPerPersonCold, value);
+        }
+
+        #endregion NormPerPersonCold : string - Норма потребления на человека для ХВС
+
+        #endregion Подблок - Холодное водоснабжение
+
+        #endregion Блок - Показания приборов
     }
 }
