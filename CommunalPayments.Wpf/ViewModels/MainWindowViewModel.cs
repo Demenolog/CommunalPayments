@@ -218,6 +218,104 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion Подблок - Горячее водоснабжение
 
+        #region Подблок - Электроэнергия
+
+        #region IsMeteringDevicesEnergySelected : bool - Состояние чекбокса приборов для ЭЭ
+
+        private bool _isMeteringDevicesEnergySelected = true;
+
+        public bool IsMeteringDevicesEnergySelected
+        {
+            get => _isMeteringDevicesEnergySelected;
+            set
+            {
+                SetField(ref _isMeteringDevicesEnergySelected, value);
+                SetField(ref _isStandardVolumeEnergySelected, !_isMeteringDevicesEnergySelected);
+                OnPropertyChanged(nameof(IsStandardVolumeEnergySelected));
+            }
+        }
+
+        #endregion IsMeteringDevicesEnergySelected : bool - Состояние чекбокса приборов для ЭЭ
+
+        #region IsStandardVolumeEnergySelected : bool - Состояние чекбокса нормативного объёма для ЭЭ
+
+        private bool _isStandardVolumeEnergySelected;
+
+        public bool IsStandardVolumeEnergySelected
+        {
+            get => _isStandardVolumeEnergySelected;
+            set
+            {
+                SetField(ref _isStandardVolumeEnergySelected, value);
+                SetField(ref _isMeteringDevicesEnergySelected, !_isStandardVolumeEnergySelected);
+                OnPropertyChanged(nameof(IsMeteringDevicesEnergySelected));
+            }
+        }
+
+        #endregion IsStandardVolumeEnergySelected : bool - Состояние чекбокса нормативного объёма для ЭЭ
+
+        #region NormPerPersonEnergy : string - Норма потребления на человека для ЭЭ
+
+        private string _normPerPersonEnergy = "Default";
+
+        public string NormPerPersonEnergy
+        {
+            get => _normPerPersonEnergy;
+            set => SetField(ref _normPerPersonEnergy, value);
+        }
+
+        #endregion NormPerPersonEnergy : string - Норма потребления на человека для ЭЭ
+
+        #region InstrumentCurrentValueEnergyDay : string - Текущие значения счётчика для ЭЭ - дневная шкала
+
+        private string _instrumentCurrentValueEnergyDay;
+
+        public string InstrumentCurrentValueEnergyDay
+        {
+            get => _instrumentCurrentValueEnergyDay;
+            set => SetField(ref _instrumentCurrentValueEnergyDay, value);
+        }
+
+        #endregion InstrumentCurrentValueEnergyDay : string - Текущие значения счётчика для ЭЭ - дневная шкала
+
+        #region InstrumentPreviousValueEnergyDay : string - Предыдущие значение счётчика для ЭЭ - дневная шкала
+
+        private string _instrumentPreviousValueEnergyDay = "lastValFromDb";
+
+        public string InstrumentPreviousValueEnergyDay
+        {
+            get => _instrumentPreviousValueEnergyDay;
+            set => SetField(ref _instrumentPreviousValueEnergyDay, value);
+        }
+
+        #endregion InstrumentPreviousValueEnergyDay : string - Предыдущие значение счётчика для ЭЭ - дневная шкала
+
+        #region InstrumentCurrentValueEnergyNight : string - Текущие значения счётчика для ЭЭ - ночная шкала
+
+        private string _instrumentCurrentValueEnergyNight;
+
+        public string InstrumentCurrentValueEnergyNight
+        {
+            get => _instrumentCurrentValueEnergyNight;
+            set => SetField(ref _instrumentCurrentValueEnergyNight, value);
+        }
+
+        #endregion InstrumentCurrentValueEnergyNight : string - Текущие значения счётчика для ЭЭ - ночная шкала
+
+        #region InstrumentPreviousValueEnergyNight : string - Предыдущие значение счётчика для ЭЭ - ночная шкала
+
+        private string _instrumentPreviousValueEnergyNight = "lastValFromDb";
+
+        public string InstrumentPreviousValueEnergyNight
+        {
+            get => _instrumentPreviousValueEnergyNight;
+            set => SetField(ref _instrumentPreviousValueEnergyNight, value);
+        }
+
+        #endregion InstrumentPreviousValueEnergyNight : string - Предыдущие значение счётчика для ЭЭ - ночная шкала
+
+        #endregion Подблок - Электроэнергия
+
         #endregion Блок - Показания приборов
     }
 }
