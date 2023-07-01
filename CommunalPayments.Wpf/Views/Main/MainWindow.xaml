@@ -91,7 +91,7 @@
                                       IsChecked="{Binding IsStandardVolumeColdSelected, UpdateSourceTrigger=PropertyChanged}" />
                             <DockPanel Grid.Row="1"
                                        IsEnabled="{Binding IsStandardVolumeColdSelected}">
-                                <Label Content="Норматив за человека" />
+                                <Label Content="Норматив за человека:" />
                                 <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                          Text="{Binding NormPerPersonCold}"/>
                             </DockPanel>
@@ -132,14 +132,14 @@
                                       IsChecked="{Binding IsStandardVolumeHotSelected, UpdateSourceTrigger=PropertyChanged}"/>
                             <DockPanel Grid.Row="1"
                                        IsEnabled="{Binding IsStandardVolumeHotSelected}">
-                                <Label Content="«ГВС Теплоноситель»"/>
+                                <Label Content="«ГВС Теплоноситель»:"/>
                                 <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                          Text="{Binding  NormPerPersonHotHeatCarrier}">
                                 </TextBox>
                             </DockPanel>
                             <DockPanel Grid.Row="1"
                                        IsEnabled="{Binding IsStandardVolumeHotSelected}">
-                                <Label Content="«ГВС Тепловая энергия»"/>
+                                <Label Content="«ГВС Тепловая энергия»:"/>
                                 <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                          Text="{Binding  NormPerPersonHotHeatEnergy}">
                                 </TextBox>
@@ -202,7 +202,7 @@
                                       IsChecked="{Binding IsStandardVolumeEnergySelected, UpdateSourceTrigger=PropertyChanged}"/>
                             <DockPanel Grid.Row="1"
                                        IsEnabled="{Binding IsStandardVolumeEnergySelected}">
-                                <Label Content="Норматив за человека" />
+                                <Label Content="Норматив за человека:" />
                                 <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                          Text="{Binding NormPerPersonEnergy}">
                                 </TextBox>
