@@ -5,6 +5,7 @@ using CommunalPayments.Wpf.Infrastructure.Constans;
 using CommunalPayments.Wpf.ViewModels.Base;
 using System.Windows.Input;
 using CommunalPayments.Wpf.Models;
+using CommunalPayments.Wpf.Services;
 
 namespace CommunalPayments.Wpf.ViewModels
 {
@@ -594,9 +595,13 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnMakeCalculationExecute(object p)
         {
-            //CalculationСoldWaterSupply.Calculate(IsMeteringDevicesColdSelected);
+            CalculationСoldWaterSupply.Calculate(IsMeteringDevicesColdSelected);
 
             CalculationHotWaterSupply.Calculate(IsMeteringDevicesHotSelected);
+
+            CalculationEnergySupply.Calculate(IsMeteringDevicesEnergySelected);
+
+            ServiceChargesTotalCalculationService.Calculate();
         }
 
         #endregion MakeCalculation command
