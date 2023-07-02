@@ -73,12 +73,12 @@
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <DockPanel Grid.Row="0">
-                                    <Label Content="Текущие показания:"></Label>
+                                    <Label Content="Текущие показания:" />
                                     <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                              Text="{Binding InstrumentCurrentValueCold}" />
                                 </DockPanel>
                                 <DockPanel Grid.Row="1">
-                                    <Label Content="Предыдущие показания:"></Label>
+                                    <Label Content="Предыдущие показания:" />
                                     <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                              Text="{Binding InstrumentPreviousValueCold}"/>
                                 </DockPanel>
@@ -88,8 +88,7 @@
                                     Orientation="Vertical">
                             <CheckBox Content="Нормативный объем"
                                       IsChecked="{Binding IsStandardVolumeColdSelected, UpdateSourceTrigger=PropertyChanged}" />
-                            <DockPanel Grid.Row="1"
-                                       IsEnabled="{Binding IsStandardVolumeColdSelected}">
+                            <DockPanel IsEnabled="{Binding IsStandardVolumeColdSelected}">
                                 <Label Content="Норматив за человека:" />
                                 <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                          Text="{Binding NormPerPersonCold}"/>
@@ -212,7 +211,9 @@
             </StackPanel>
         </GroupBox>
             <StackPanel Margin="5">
-                <Button Margin="5">Test</Button>
+                <Button Margin="5"
+                        Command="{Binding MakeCalculation}"
+                        >Произвести расчет</Button>
                 <Button Margin="5">Test</Button>
                 <Button Margin="5">Test</Button>
             </StackPanel>
