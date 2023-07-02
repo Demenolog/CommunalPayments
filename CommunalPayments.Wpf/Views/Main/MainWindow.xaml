@@ -211,10 +211,11 @@
             </StackPanel>
         </GroupBox>
             <StackPanel Margin="5">
-                <Button Margin="5"
-                        Command="{Binding MakeCalculation}"
+                <Button Command="{Binding MakeCalculation}"
+                        Margin="5"
                         Content="Произвести расчет"/>
-                <Button Margin="5"
+                <Button Command="{Binding SaveCalculation}"
+                        Margin="5"
                         Content="Сохранить расчет"/>
                 <Button Margin="5">Test</Button>
             </StackPanel>
