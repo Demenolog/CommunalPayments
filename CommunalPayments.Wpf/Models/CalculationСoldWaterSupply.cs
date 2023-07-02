@@ -25,9 +25,9 @@ namespace CommunalPayments.Wpf.Models
 
         private static void CalculateMeteringDevices()
         {
-            var instrumentCurrentValue = double.Parse(MainWindow.InstrumentCurrentValueCold);
-            var instrumentPreviousValue = double.Parse(MainWindow.InstrumentPreviousValueCold);
-            var rate = double.Parse(MainWindow.RateCold);
+            var instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueCold);
+            var instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueCold);
+            var rate = decimal.Parse(MainWindow.RateCold);
 
             var consumptionValue = instrumentCurrentValue - instrumentPreviousValue;
             var serviceCharges = consumptionValue * rate;
@@ -39,8 +39,8 @@ namespace CommunalPayments.Wpf.Models
         private static void CalculateStandardVolume()
         {
             var numberResidents = int.Parse(MainWindow.NumberResidents);
-            var normPerPerson = double.Parse(MainWindow.NormPerPersonCold);
-            var rate = double.Parse(MainWindow.RateCold);
+            var normPerPerson = decimal.Parse(MainWindow.NormPerPersonCold);
+            var rate = decimal.Parse(MainWindow.RateCold);
 
             var consumptionValue = numberResidents * normPerPerson;
             var serviceCharges = consumptionValue * rate;
