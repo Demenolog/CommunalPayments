@@ -1,5 +1,10 @@
-﻿using CommunalPayments.Wpf.Infrastructure.Constans;
+﻿using System;
+using System.Windows;
+using CommunalPayments.Wpf.Infrastructure.Commands;
+using CommunalPayments.Wpf.Infrastructure.Constans;
 using CommunalPayments.Wpf.ViewModels.Base;
+using System.Windows.Input;
+using CommunalPayments.Wpf.Models;
 
 namespace CommunalPayments.Wpf.ViewModels
 {
@@ -551,8 +556,30 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion ServiceChargesTotal : string - Общая сумма начислений
 
-        #endregion
+        #endregion Раздел - Итого
 
         #endregion Блок - Расчёт показаний
+
+        #region Блок - Кнопок
+
+        #region MakeCalculation command
+
+        public ICommand MakeCalculation { get; }
+
+        private bool CanMakeCalculationExecuted(object p) => true;
+
+        private void OnMakeCalculationExecute(object p)
+        {
+            CalculationСoldWaterSupply.Calculate(IsMeteringDevicesColdSelected);
+        }
+
+        #endregion MakeCalculation command
+
+        #endregion Блок - Кнопок
+
+        public MainWindowViewModel()
+        {
+            MakeCalculation = new LambdaCommand(OnMakeCalculationExecute, CanMakeCalculationExecuted);
+        }
     }
 }
