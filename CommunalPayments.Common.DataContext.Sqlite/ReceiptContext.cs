@@ -10,7 +10,7 @@ namespace CommunalPayments.Common.DataContext.Sqlite
 
         static ReceiptContext()
         {
-            ConnectionString = $@"Data Source={Path.Combine(Environment.CurrentDirectory, "Data", "ReceiptContext.db")};Version=3;";
+            ConnectionString = $@"Data Source={Path.Combine(Environment.CurrentDirectory, "Data", "ReceiptDb.db")};Version=3;";
         }
 
         public static SQLiteConnection CreateConnection()
