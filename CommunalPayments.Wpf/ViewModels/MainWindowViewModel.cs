@@ -440,17 +440,29 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion RateHotHeatEnergy : string - Тариф для «ГВС Тепловая энергия»
 
-        #region ServiceChargesHot : string - Начисления за ГВС
+        #region ServiceChargesHotHeatCarrier : string - Начисления за «ГВС Теплоноситель»
 
-        private string _serviceChargesHot;
+        private string _serviceChargesHotHeatCarrier;
 
-        public string ServiceChargesHot
+        public string ServiceChargesHotHeatCarrier
         {
-            get => _serviceChargesHot;
-            set => SetField(ref _serviceChargesHot, value);
+            get => _serviceChargesHotHeatCarrier;
+            set => SetField(ref _serviceChargesHotHeatCarrier, value);
         }
 
-        #endregion ServiceChargesHot : string - Начисления за ГВС
+        #endregion ServiceChargesHotHeatCarrier : string - Начисления за «ГВС Теплоноситель»
+
+        #region ServiceChargesHotHeatEnergy : string - Начисления за «ГВС Теплоноситель»
+
+        private string _serviceChargesHotHeatEnergy;
+
+        public string ServiceChargesHotHeatEnergy
+        {
+            get => _serviceChargesHotHeatEnergy;
+            set => SetField(ref _serviceChargesHotHeatEnergy, value);
+        }
+
+        #endregion ServiceChargesHotHeatEnergy : string - Начисления за «ГВС Теплоноситель»
 
         #endregion Раздел - ГВС
 
