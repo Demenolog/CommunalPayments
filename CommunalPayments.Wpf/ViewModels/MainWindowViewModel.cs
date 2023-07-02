@@ -606,11 +606,27 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion MakeCalculation command
 
+        #region SaveCalculation command
+
+        public ICommand SaveCalculation { get; }
+
+        private bool CanSaveCalculationExecuted(object p) => true;
+
+        private void OnSaveCalculationExecute(object p)
+        {
+
+        }
+
+
+        #endregion SaveCalculation command
+
         #endregion Блок - Кнопок
 
         public MainWindowViewModel()
         {
             MakeCalculation = new LambdaCommand(OnMakeCalculationExecute, CanMakeCalculationExecuted);
+
+            SaveCalculation = new LambdaCommand(OnSaveCalculationExecute, CanSaveCalculationExecuted);
         }
     }
 }
