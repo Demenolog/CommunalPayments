@@ -21,7 +21,7 @@ namespace CommunalPayments.Common.DataContext.Sqlite
             {
                 connection.Open();
             }
-            catch (SQLiteException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(nameof(ex));
                 throw;
