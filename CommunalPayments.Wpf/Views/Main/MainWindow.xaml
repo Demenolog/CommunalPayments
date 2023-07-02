@@ -213,8 +213,9 @@
             <StackPanel Margin="5">
                 <Button Margin="5"
                         Command="{Binding MakeCalculation}"
-                        >Произвести расчет</Button>
-                <Button Margin="5">Test</Button>
+                        Content="Произвести расчет"/>
+                <Button Margin="5"
+                        Content="Сохранить расчет"/>
                 <Button Margin="5">Test</Button>
             </StackPanel>
         </StackPanel>
