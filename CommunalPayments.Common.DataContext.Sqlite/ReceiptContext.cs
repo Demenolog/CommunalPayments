@@ -4,7 +4,7 @@ using System.IO;
 
 namespace CommunalPayments.Common.DataContext.Sqlite
 {
-    public static class ReceiptContext
+    internal static class ReceiptContext
     {
         private static readonly string ConnectionString;
 
