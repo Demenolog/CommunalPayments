@@ -220,6 +220,7 @@
     <Compile Include="Infrastructure\Constans\ElectricPowerSupplyConstans.cs" />
     <Compile Include="Infrastructure\Constans\HotWaterSupplyConstans.cs" />
     <Compile Include="Infrastructure\Enums\Months.cs" />
+    <Compile Include="Models\CalculationHotWaterSupply.cs" />
     <Compile Include="Models\CalculationСoldWaterSupply.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Services\EnumBindingSourceExtensionService.cs" />

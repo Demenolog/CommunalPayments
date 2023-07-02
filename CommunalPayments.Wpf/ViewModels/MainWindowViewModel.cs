@@ -234,6 +234,18 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion NormPerPersonHotHeatEnergy : string - Норма потребления на человека для «ГВС Теплоноситель»
 
+        #region NormPerCubicMeter : string - Норма подогрева на 1 метр кубический
+
+        private string _normPerCubicMeter = HotWaterSupplyConstans.GetNormPerCubicMeter().ToString();
+
+        public string NormPerCubicMeter
+        {
+            get => _normPerCubicMeter;
+            set => SetField(ref _normPerCubicMeter, value);
+        }
+
+        #endregion NormPerCubicMeter : string - Норма подогрева на 1 метр кубический
+
         #endregion Подблок - Горячее водоснабжение
 
         #region Подблок - Электроэнергия
@@ -582,7 +594,9 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnMakeCalculationExecute(object p)
         {
-            CalculationСoldWaterSupply.Calculate(IsMeteringDevicesColdSelected);
+            //CalculationСoldWaterSupply.Calculate(IsMeteringDevicesColdSelected);
+
+            CalculationHotWaterSupply.Calculate(IsMeteringDevicesHotSelected);
         }
 
         #endregion MakeCalculation command
