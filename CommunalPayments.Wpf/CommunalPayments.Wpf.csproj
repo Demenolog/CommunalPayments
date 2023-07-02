@@ -263,6 +263,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CommunalPayments.Common.DataContext.Sqlite\CommunalPayments.Common.DataContext.Sqlite.csproj">
+      <Project>{892b06ca-e648-41e8-acfa-9cd8ec012440}</Project>
+      <Name>CommunalPayments.Common.DataContext.Sqlite</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
