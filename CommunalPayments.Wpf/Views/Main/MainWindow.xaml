@@ -263,7 +263,7 @@
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesHotSelected}">
                             <Label Content="Норматив за подогрев 1 м^3:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding NormPerPersonHotHeatEnergy}"/>
+                                     Text="{Binding NormPerCubicMeter}"/>
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Тариф «ГВС Теплоноситель»:" />
