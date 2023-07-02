@@ -1,33 +1,57 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
-using System.IO;
 
 namespace CommunalPayments.Common.DataContext.Sqlite
 {
-    public static class ReceiptDb
+    public class ReceiptDb : IDisposable
     {
-        private static readonly string ConnectionString;
+        private readonly SQLiteConnection _connection;
 
-        static ReceiptDb()
+        public ReceiptDb()
         {
-            ConnectionString = $@"Data Source={Path.Combine(Environment.CurrentDirectory, "Data", "ReceiptDb.db")};Version=3;";
+            _connection = ReceiptContext.CreateConnection();
         }
 
-        public static SQLiteConnection CreateConnection()
+        public SQLiteConnection GetConnection()
         {
-            SQLiteConnection connection = new SQLiteConnection(ConnectionString);
+            return _connection;
+        }
+
+        public bool Insert(List<string> storedValues)
+        {
+            int result;
 
             try
             {
-                connection.Open();
+                using (var connection = GetConnection())
+                {
+                    string insertQuery = @"INSERT INTO Receipt ([Год], [Месяц], [Счетчик ХВС], [Начисления за ХВС], [Счетчик ГВС ТН], [Счетчик ГВС ТЭ], [Начисления за ГВС ТН], [Начисления за ГВС ТЭ], [Счетчик ЭЭ день], [Счетчик ЭЭ ночь], [Начисления за ЭЭ], [Итого])
+                       VALUES (@Param1, @Param2, @Param3, @Param4, @Param5, @Param6, @Param7, @Param8, @Param9, @Param10 , @Param11, @Param12)";
+
+                    using (var command = new SQLiteCommand(insertQuery, connection))
+                    {
+                        for (int i = 0; i < storedValues.Count; i++)
+                        {
+                            command.Parameters.AddWithValue($"@Param{i + 1}", storedValues[i]);
+                        }
+
+                        result = command.ExecuteNonQuery();
+                    }
+                }
             }
-            catch (SQLiteException ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(nameof(ex));
+                Console.WriteLine(ex);
                 throw;
             }
 
-            return connection;
+            return (result > 0);
+        }
+
+        public void Dispose()
+        {
+            _connection.Dispose();
         }
     }
 }
