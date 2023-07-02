@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Windows;
 using CommunalPayments.Wpf.Infrastructure.Commands;
 using CommunalPayments.Wpf.Infrastructure.Constans;
@@ -6,6 +8,7 @@ using CommunalPayments.Wpf.ViewModels.Base;
 using System.Windows.Input;
 using CommunalPayments.Wpf.Models;
 using CommunalPayments.Wpf.Services;
+using CommunalPayments.Common.DataContext.Sqlite;
 
 namespace CommunalPayments.Wpf.ViewModels
 {
@@ -614,9 +617,16 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnSaveCalculationExecute(object p)
         {
+            using (var test = ReceiptDb.CreateConnection())
+            {
+                string createTableQuery = "CREATE TABLE Customers (Id INTEGER PRIMARY KEY, Name TEXT);";
 
+                using (var createTableCommand = new SQLiteCommand(createTableQuery, test))
+                {
+                    createTableCommand.ExecuteNonQuery();
+                }
+            }
         }
-
 
         #endregion SaveCalculation command
 
