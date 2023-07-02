@@ -617,7 +617,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnSaveCalculationExecute(object p)
         {
-            using (var test = ReceiptDb.CreateConnection())
+            using (var test = ReceiptContext.CreateConnection())
             {
                 string createTableQuery = "CREATE TABLE Customers (Id INTEGER PRIMARY KEY, Name TEXT);";
 
