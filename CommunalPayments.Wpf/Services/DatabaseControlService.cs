@@ -1,10 +1,12 @@
-﻿using CommunalPayments.Common.DataContext.Sqlite;
+﻿using System;
+using CommunalPayments.Common.DataContext.Sqlite;
 using CommunalPayments.Common.DataContext.Sqlite.Models;
 using CommunalPayments.Wpf.Infrastructure.Enums;
 using CommunalPayments.Wpf.ViewModels;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
+using System.Linq;
 using System.Windows;
 using System.Windows.Markup;
 
@@ -44,6 +46,11 @@ namespace CommunalPayments.Wpf.Services
             using (var db = new ReceiptDb())
             {
                 var result = db.InsertData(storedValues);
+
+                if (DataViewWindow != null)
+                {
+                    UpdateDataGrid();
+                }
 
                 MessageBox.Show($"Команда завершилась с результатом - {result}");
             }
@@ -90,7 +97,11 @@ namespace CommunalPayments.Wpf.Services
                 {
                     var data = db.GetAllData();
 
-                    DataViewWindow.Receipts = new ObservableCollection<ReceiptData>(data);
+                    var result = data.OrderBy(x => int.Parse(x.CalculationYear))
+                        .ThenBy(x => Enum.Parse(typeof(Months), x.CalculationMonth))
+                        .ToList();
+
+                    DataViewWindow.Receipts = new ObservableCollection<ReceiptData>(result);
                 }
                 else
                 {
