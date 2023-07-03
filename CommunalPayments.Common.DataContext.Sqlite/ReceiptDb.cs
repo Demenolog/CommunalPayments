@@ -165,14 +165,14 @@ namespace CommunalPayments.Common.DataContext.Sqlite
 
             try
             {
-                int result;
+                object result;
 
                 using (var command = new SQLiteCommand(selectQuery, connection))
                 {
-                    result = command.ExecuteNonQuery();
+                    result = command.ExecuteScalar();
                 }
 
-                return result > 0;
+                return (result != null && result != DBNull.Value);
             }
             catch (Exception ex)
             {
