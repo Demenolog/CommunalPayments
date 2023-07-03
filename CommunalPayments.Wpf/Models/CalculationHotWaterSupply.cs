@@ -55,12 +55,14 @@ namespace CommunalPayments.Wpf.Models
             }
             catch (OverflowException ex)
             {
-                UserAlertService.Error(ex.Message);
+                throw;
+            }
+            catch (ArgumentNullException ex)
+            {
                 throw;
             }
             catch (Exception ex)
             {
-                UserAlertService.Error(ex.Message);
                 throw;
             }
         }
@@ -99,12 +101,10 @@ namespace CommunalPayments.Wpf.Models
             }
             catch (OverflowException ex)
             {
-                UserAlertService.Error(ex.Message);
                 throw;
             }
             catch (Exception ex)
             {
-                UserAlertService.Error(ex.Message);
                 throw;
             }
         }

@@ -1,4 +1,5 @@
-﻿using CommunalPayments.Wpf.Infrastructure.Commands;
+﻿using System;
+using CommunalPayments.Wpf.Infrastructure.Commands;
 using CommunalPayments.Wpf.Infrastructure.Constans;
 using CommunalPayments.Wpf.Models;
 using CommunalPayments.Wpf.Services;
@@ -779,13 +780,30 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnMakeCalculationExecute(object p)
         {
-            CalculationСoldWaterSupply.Calculate(IsMeteringDevicesColdSelected);
+            try
+            {
+                CalculationСoldWaterSupply.Calculate(IsMeteringDevicesColdSelected);
 
-            CalculationHotWaterSupply.Calculate(IsMeteringDevicesHotSelected);
+                CalculationHotWaterSupply.Calculate(IsMeteringDevicesHotSelected);
 
-            CalculationEnergySupply.Calculate(IsMeteringDevicesEnergySelected);
+                CalculationEnergySupply.Calculate(IsMeteringDevicesEnergySelected);
 
-            CalculationServiceChargesTotal.Calculate();
+                CalculationServiceChargesTotal.Calculate();
+            }
+            catch (ArgumentNullException ex)
+            {
+                UserAlertService.Error("Одна из строк показаний приборов пуста или имеет некорректный формат !");
+            }
+            catch (OverflowException ex)
+            {
+                UserAlertService.Error("Произошло переполнение одной из переменных !");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                UserAlertService.Error(ex.Message);
+                throw;
+            }
         }
 
         #endregion MakeCalculation command
