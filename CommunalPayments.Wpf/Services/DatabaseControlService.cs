@@ -37,11 +37,12 @@ namespace CommunalPayments.Wpf.Services
                 MainWindow.ServiceChargesTotal
             };
 
-            var db = new ReceiptDb();
+            using (var db = new ReceiptDb())
+            {
+                var result = db.InsertData(storedValues);
 
-            var result = db.InsertData(storedValues);
-
-            MessageBox.Show($"Команда завершилась с результатом - {result}");
+                MessageBox.Show($"Команда завершилась с результатом - {result}");
+            }
         }
 
         public static void GetLatestData(string year, string month)
@@ -52,33 +53,34 @@ namespace CommunalPayments.Wpf.Services
                 year = (int.Parse(year) - 1).ToString();
             }
 
-            var db = new ReceiptDb();
-
-            if (db.IsPreviousDataExist(year, month))
+            using (var db = new ReceiptDb())
             {
-                var result = db.GetPreviousData(year, month);
-
-                if (result != null)
+                if (db.IsPreviousDataExist(year, month))
                 {
-                    MainWindow.InstrumentPreviousValueCold = result[0];
-                    MainWindow.InstrumentPreviousValueHot = result[1];
-                    MainWindow.InstrumentPreviousValueEnergyDay = result[2];
-                    MainWindow.InstrumentPreviousValueEnergyNight = result[3];
+                    var result = db.GetPreviousData(year, month);
+
+                    if (result != null)
+                    {
+                        MainWindow.InstrumentPreviousValueCold = result[0];
+                        MainWindow.InstrumentPreviousValueHot = result[1];
+                        MainWindow.InstrumentPreviousValueEnergyDay = result[2];
+                        MainWindow.InstrumentPreviousValueEnergyNight = result[3];
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Ошибка");
+                    MessageBox.Show("Данных нет");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Данных нет");
             }
         }
 
         public static void UpdateDataGrid()
         {
-
+            var db = new ReceiptDb();
         }
     }
 }
