@@ -40,8 +40,7 @@ namespace CommunalPayments.Wpf.Models
                     serviceCharges = consumptionValue * rate;
                 }
 
-                MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
-                MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
+                SetValues(consumptionValue, serviceCharges);
             }
             catch (OverflowException ex)
             {
@@ -70,12 +69,12 @@ namespace CommunalPayments.Wpf.Models
                     numberResidents = int.Parse(MainWindow.NumberResidents);
                     normPerPerson = decimal.Parse(MainWindow.NormPerPersonCold);
                     rate = decimal.Parse(MainWindow.RateCold);
+
                     consumptionValue = numberResidents * normPerPerson;
                     serviceCharges = consumptionValue * rate;
                 }
 
-                MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
-                MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
+                SetValues(consumptionValue, serviceCharges);
             }
             catch (OverflowException ex)
             {
@@ -87,6 +86,12 @@ namespace CommunalPayments.Wpf.Models
                 Console.WriteLine(ex);
                 throw;
             }
+        }
+
+        private static void SetValues(decimal consumptionValue, decimal serviceCharges)
+        {
+            MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
         }
     }
 }
