@@ -1,10 +1,6 @@
-﻿using CommunalPayments.Wpf.ViewModels;
+﻿using CommunalPayments.Wpf.Infrastructure.Constans;
+using CommunalPayments.Wpf.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunalPayments.Wpf.Infrastructure.Constans;
 
 namespace CommunalPayments.Wpf.Models
 {
@@ -26,36 +22,86 @@ namespace CommunalPayments.Wpf.Models
 
         private static void CalculateMeteringDevices()
         {
-            var instrumentCurrentValueDay = decimal.Parse(MainWindow.InstrumentCurrentValueEnergyDay);
-            var instrumentPreviousValueDay = decimal.Parse(MainWindow.InstrumentPreviousValueEnergyDay);
-            var instrumentCurrentValueNight = decimal.Parse(MainWindow.InstrumentCurrentValueEnergyNight);
-            var instrumentPreviousValueNight = decimal.Parse(MainWindow.InstrumentPreviousValueEnergyNight);
-            var rateDay = decimal.Parse(MainWindow.RateEnergyDay);
-            var rateNight = decimal.Parse(MainWindow.RateEnergyNight);
+            try
+            {
+                decimal instrumentCurrentValueDay;
+                decimal instrumentPreviousValueDay;
+                decimal instrumentCurrentValueNight;
+                decimal instrumentPreviousValueNight;
+                decimal rateDay;
+                decimal rateNight;
+                decimal consumptionValueDay;
+                decimal consumptionValueNight;
+                decimal serviceChargesDay;
+                decimal serviceChargesNight;
+                decimal serviceChargesTotal;
 
-            var consumptionValueDay = instrumentCurrentValueDay - instrumentPreviousValueDay;
-            var consumptionValueNight = instrumentCurrentValueNight - instrumentPreviousValueNight;
+                checked
+                {
+                    instrumentCurrentValueDay = decimal.Parse(MainWindow.InstrumentCurrentValueEnergyDay);
+                    instrumentPreviousValueDay = decimal.Parse(MainWindow.InstrumentPreviousValueEnergyDay);
+                    instrumentCurrentValueNight = decimal.Parse(MainWindow.InstrumentCurrentValueEnergyNight);
+                    instrumentPreviousValueNight = decimal.Parse(MainWindow.InstrumentPreviousValueEnergyNight);
+                    rateDay = decimal.Parse(MainWindow.RateEnergyDay);
+                    rateNight = decimal.Parse(MainWindow.RateEnergyNight);
 
-            var serviceChargesDay = consumptionValueDay * rateDay;
-            var serviceChargesNight = consumptionValueNight * rateNight;
-            var serviceChargesTotal = serviceChargesDay + serviceChargesNight;
+                    consumptionValueDay = instrumentCurrentValueDay - instrumentPreviousValueDay;
+                    consumptionValueNight = instrumentCurrentValueNight - instrumentPreviousValueNight;
 
-            MainWindow.ConsumptionValueEnergyDay = consumptionValueDay.ToString(CalculatedValuesFormatConstans.Common);
-            MainWindow.ConsumptionValueEnergyNight = consumptionValueNight.ToString(CalculatedValuesFormatConstans.Common);
-            MainWindow.ServiceChargesEnergy = serviceChargesTotal.ToString(CalculatedValuesFormatConstans.Money);
+                    serviceChargesDay = consumptionValueDay * rateDay;
+                    serviceChargesNight = consumptionValueNight * rateNight;
+                    serviceChargesTotal = serviceChargesDay + serviceChargesNight;
+                }
+
+                MainWindow.ConsumptionValueEnergyDay = consumptionValueDay.ToString(CalculatedValuesFormatConstans.Common);
+                MainWindow.ConsumptionValueEnergyNight = consumptionValueNight.ToString(CalculatedValuesFormatConstans.Common);
+                MainWindow.ServiceChargesEnergy = serviceChargesTotal.ToString(CalculatedValuesFormatConstans.Money);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
         private static void CalculateStandardVolume()
         {
-            var numberResidents = int.Parse(MainWindow.NumberResidents);
-            var normPerPerson = decimal.Parse(MainWindow.NormPerPersonEnergy);
-            var rateGeneral = decimal.Parse(MainWindow.RateEnergyGeneral);
+            try
+            {
+                int numberResidents;
+                decimal normPerPerson;
+                decimal rateGeneral;
+                decimal consumptionValue;
+                decimal serviceCharges;
 
-            var consumptionValue = numberResidents * normPerPerson;
-            var serviceCharges = consumptionValue * rateGeneral;
+                checked
+                {
+                    numberResidents = int.Parse(MainWindow.NumberResidents);
+                    normPerPerson = decimal.Parse(MainWindow.NormPerPersonEnergy);
+                    rateGeneral = decimal.Parse(MainWindow.RateEnergyGeneral);
 
-            MainWindow.ConsumptionValueEnergyGeneral = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
-            MainWindow.ServiceChargesEnergy = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
+                    consumptionValue = numberResidents * normPerPerson;
+                    serviceCharges = consumptionValue * rateGeneral;
+                }
+
+                MainWindow.ConsumptionValueEnergyGeneral = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
+                MainWindow.ServiceChargesEnergy = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
     }
 }
