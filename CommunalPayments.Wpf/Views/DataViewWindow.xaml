@@ -1,27 +1,62 @@
 ﻿<Window x:Class="CommunalPayments.Wpf.Views.DataViewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CommunalPayments.Wpf.Views"
         mc:Ignorable="d"
         DataContext="{Binding Path=DataViewWindowModel, Source={StaticResource Locator}}"
-        Title="{Binding Title}" 
-        ResizeMode="CanMinimize"
-        Height="450" Width="800">
+        Title="{Binding Title}"
+        ResizeMode="CanResizeWithGrip"
+        Height="450" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.15*" />
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0">
+        <DataGrid Grid.Row="0"
+                  ItemsSource="{Binding Receipts, UpdateSourceTrigger=PropertyChanged}"
+                  AutoGenerateColumns="False"
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" 
+                                    Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Год" 
+                                    Binding="{Binding CalculationYear}"/>
+                <DataGridTextColumn Header="Месяц" 
+                                    Binding="{Binding CalculationMonth}"/>
+                <DataGridTextColumn Header="Счетчик ХВС" 
+                                    Binding="{Binding ConsumptionValueCold}"/>
+                <DataGridTextColumn Header="Начисления за ХВС" 
+                                    Binding="{Binding ServiceChargesCold}"/>
+                <DataGridTextColumn Header="Счетчик ГВС ТН" 
+                                    Binding="{Binding ConsumptionValueHotHeatCarrier}"/>
+                <DataGridTextColumn Header="Счетчик ГВС ТЭ" 
+                                    Binding="{Binding ConsumptionValueHotHeatEnergy}"/>
+                <DataGridTextColumn Header="Начисления за ГВС ТН" 
+                                    Binding="{Binding ServiceChargesHotHeatCarrier}"/>
+                <DataGridTextColumn Header="Начисления за ГВС ТЭ" 
+                                    Binding="{Binding ServiceChargesHotHeatEnergy}"/>
+                <DataGridTextColumn Header="Счетчик ЭЭ день" 
+                                    Binding="{Binding ConsumptionValueEnergyDay}"/>
+                <DataGridTextColumn Header="Счетчик ЭЭ ночь" 
+                                    Binding="{Binding ConsumptionValueEnergyNight}"/>
+                <DataGridTextColumn Header="Счетчик ЭЭ общий" 
+                                    Binding="{Binding ConsumptionValueEnergyGeneral}"/>
+                <DataGridTextColumn Header="Начисления за ЭЭ" 
+                                    Binding="{Binding ServiceChargesEnergy}"/>
+                <DataGridTextColumn Header="Итого" 
+                                    Binding="{Binding ServiceChargesTotal}"/>
+            </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-        <Button Content="Обновить"
-                Margin="10"/>
+            <Button Command="{Binding UpdateDataGrid}"
+                Content="Обновить"
+                Margin="10" />
             <StackPanel Orientation="Horizontal"
                         Margin="10">
                 <Button Content="Удалить строку" />
