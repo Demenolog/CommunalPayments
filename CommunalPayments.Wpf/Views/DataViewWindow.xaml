@@ -20,7 +20,7 @@
                   CanUserResizeRows="False"
                   IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="№"
+                <DataGridTextColumn Header="Id"
                                     Binding="{Binding Id}" />
                 <DataGridTextColumn Header="Год"
                                     Binding="{Binding CalculationYear}" />
