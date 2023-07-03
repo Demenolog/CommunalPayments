@@ -21,13 +21,12 @@ namespace CommunalPayments.Common.DataContext.Sqlite
 
         public bool InsertData(List<string> storedValues)
         {
-            try
-            {
-                var connection = GetConnection();
-
-                string insertQuery = @"INSERT INTO Receipt ([Год], [Месяц], [Счетчик ХВС], [Начисления за ХВС], [Счетчик ГВС ТН], [Счетчик ГВС ТЭ], [Начисления за ГВС ТН], [Начисления за ГВС ТЭ], [Счетчик ЭЭ день], [Счетчик ЭЭ ночь], [Счетчик ЭЭ общий], [Начисления за ЭЭ], [Итого])
+            var connection = GetConnection();
+            string insertQuery = @"INSERT INTO Receipt ([Год], [Месяц], [Счетчик ХВС], [Начисления за ХВС], [Счетчик ГВС ТН], [Счетчик ГВС ТЭ], [Начисления за ГВС ТН], [Начисления за ГВС ТЭ], [Счетчик ЭЭ день], [Счетчик ЭЭ ночь], [Счетчик ЭЭ общий], [Начисления за ЭЭ], [Итого])
                        VALUES (@Param1, @Param2, @Param3, @Param4, @Param5, @Param6, @Param7, @Param8, @Param9, @Param10 , @Param11, @Param12, @Param13)";
 
+            try
+            {
                 using (var command = new SQLiteCommand(insertQuery, connection))
                 {
                     for (int i = 0; i < storedValues.Count; i++)
@@ -111,10 +110,10 @@ namespace CommunalPayments.Common.DataContext.Sqlite
             }
         }
 
-        public bool IsPreviousDataExist(string year, string month)
+        public bool IsDataExist(string year, string month)
         {
             var connection = GetConnection();
-            string selectQuery = @"SELECT COUNT(*) FROM Receipt WHERE [Год] = @Year AND [Месяц] = @Month";
+            string selectQuery = @"SELECT COUNT(*) FROM Receipt WHERE [Год] = @Year AND [Месяц] = @Month LIMIT 1";
 
             try
             {
