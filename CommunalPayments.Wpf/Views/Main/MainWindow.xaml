@@ -213,19 +213,19 @@
             <StackPanel Margin="5">
                 <Label Content="Основные команды"
                        HorizontalAlignment="Center" />
-                <Button Command="{Binding MakeCalculation}"
-                        Margin="5"
+                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                        Command="{Binding MakeCalculation}"
                         Content="Произвести расчет" />
-                <Button Command="{Binding SaveCalculation}"
-                        Margin="5"
+                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                        Command="{Binding SaveCalculation}"
                         Content="Сохранить расчет" />
                 <Label Content="Дополнительные команды"
                        HorizontalAlignment="Center" />
-                <Button Command="{Binding OpenDataViewWindow}"
-                        Margin="5"
+                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                        Command="{Binding OpenDataViewWindow}"
                         Content="Просмотреть прошлые данные" />
-                <Button Command="{Binding GetPreviousData}"
-                        Margin="5"
+                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                        Command="{Binding GetPreviousData}"
                         Content="Получить прошлые данные" />
             </StackPanel>
         </StackPanel>
