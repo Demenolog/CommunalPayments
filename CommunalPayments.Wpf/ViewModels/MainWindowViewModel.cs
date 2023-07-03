@@ -792,7 +792,8 @@ namespace CommunalPayments.Wpf.ViewModels
             }
             catch (ArgumentNullException ex)
             {
-                UserAlertService.Error("Одна из строк пуста или имеет некорректный формат !");
+                ClearCalculationService.Clear();
+                UserAlertService.Error("Одна из строк, показаний приборов или общей информации, пуста или имеет некорректный формат !");
             }
             catch (OverflowException ex)
             {
