@@ -1,4 +1,5 @@
 ﻿using CommunalPayments.Common.DataContext.Sqlite;
+using CommunalPayments.Wpf.Infrastructure.Enums;
 using CommunalPayments.Wpf.ViewModels;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -45,10 +46,16 @@ namespace CommunalPayments.Wpf.Services
 
         public static void GetLatestData(string year, string month)
         {
-            if (new ReceiptDb().IsPreviousDataExist(year, month))
+            if (month == "Январь")
             {
-                var db = new ReceiptDb();
+                month = Months.Декабрь.ToString();
+                year = (int.Parse(year) - 1).ToString();
+            }
 
+            var db = new ReceiptDb();
+
+            if (db.IsPreviousDataExist(year, month))
+            {
                 var result = db.GetPreviousData(year, month);
 
                 if (result != null)
