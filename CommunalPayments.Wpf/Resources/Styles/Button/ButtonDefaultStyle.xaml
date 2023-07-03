@@ -21,7 +21,7 @@
     <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
     <Style x:Key="ButtonDefaultStyle" TargetType="{x:Type Button}">
         <!--My style-->
-        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="Margin" Value="5" />
         <!--Common style-->
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
