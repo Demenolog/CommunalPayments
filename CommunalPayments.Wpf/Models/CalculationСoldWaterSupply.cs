@@ -1,4 +1,5 @@
 ﻿using CommunalPayments.Wpf.Infrastructure.Constans;
+using CommunalPayments.Wpf.Services;
 using CommunalPayments.Wpf.ViewModels;
 using System;
 
@@ -44,12 +45,12 @@ namespace CommunalPayments.Wpf.Models
             }
             catch (OverflowException ex)
             {
-                Console.WriteLine(ex);
+                UserAlertService.Error(ex.Message);
                 throw;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                UserAlertService.Error(ex.Message);
                 throw;
             }
         }
@@ -78,12 +79,12 @@ namespace CommunalPayments.Wpf.Models
             }
             catch (OverflowException ex)
             {
-                Console.WriteLine(ex);
+                UserAlertService.Error(ex.Message);
                 throw;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                UserAlertService.Error(ex.Message);
                 throw;
             }
         }

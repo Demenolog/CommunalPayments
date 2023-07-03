@@ -1,6 +1,7 @@
 ﻿using CommunalPayments.Wpf.Infrastructure.Constans;
 using CommunalPayments.Wpf.ViewModels;
 using System;
+using CommunalPayments.Wpf.Services;
 
 namespace CommunalPayments.Wpf.Models
 {
@@ -23,7 +24,7 @@ namespace CommunalPayments.Wpf.Models
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                UserAlertService.Error(ex.Message);
                 throw;
             }
         }
