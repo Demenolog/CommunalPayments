@@ -223,10 +223,10 @@
                        HorizontalAlignment="Center" />
                 <Button Style="{StaticResource ButtonDefaultStyle}" 
                         Command="{Binding OpenDataViewWindow}"
-                        Content="Просмотреть прошлые данные" />
+                        Content="Список прошлых расчетов" />
                 <Button Style="{StaticResource ButtonDefaultStyle}" 
                         Command="{Binding GetPreviousData}"
-                        Content="Получить прошлые данные" />
+                        Content="Подставить предыдущие показания" />
             </StackPanel>
         </StackPanel>
         <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
