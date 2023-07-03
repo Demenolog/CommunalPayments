@@ -217,7 +217,7 @@
                 <Button Command="{Binding SaveCalculation}"
                         Margin="5"
                         Content="Сохранить расчет"/>
-                <Button Command="{Binding GetLatestData}"
+                <Button Command="{Binding GetPreviousData}"
                         Margin="5"
                         Content="Получить прошлые данные"/>
             </StackPanel>

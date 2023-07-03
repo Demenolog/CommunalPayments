@@ -623,13 +623,13 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion SaveCalculation command
 
-        #region GetLatestData command
+        #region GetPreviousData command
 
-        public ICommand GetLatestData { get; }
+        public ICommand GetPreviousData { get; }
 
-        private bool CanGetLatestDataExecuted(object p) => IsMeteringDevicesColdSelected && IsMeteringDevicesHotSelected && IsMeteringDevicesEnergySelected;
+        private bool CanGetPreviousDataExecuted(object p) => IsMeteringDevicesColdSelected && IsMeteringDevicesHotSelected && IsMeteringDevicesEnergySelected;
 
-        private void OnGetLatestDataExecute(object p)
+        private void OnGetPreviousDataExecute(object p)
         {
             var year = CalculationYear;
             var month = CalculationMonth;
@@ -637,7 +637,7 @@ namespace CommunalPayments.Wpf.ViewModels
             DatabaseControlService.GetLatestData(year, month);
         }
 
-        #endregion GetLatestData command
+        #endregion GetPreviousData command
 
         #endregion Блок - Кнопок
 
@@ -647,7 +647,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
             SaveCalculation = new LambdaCommand(OnSaveCalculationExecute, CanSaveCalculationExecuted);
 
-            GetLatestData = new LambdaCommand(OnGetLatestDataExecute, CanGetLatestDataExecuted);
+            GetPreviousData = new LambdaCommand(OnGetPreviousDataExecute, CanGetPreviousDataExecuted);
         }
     }
 }
