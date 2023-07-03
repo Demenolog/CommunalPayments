@@ -2,7 +2,7 @@
 
 namespace CommunalPayments.Wpf.Services
 {
-    internal static class DataViewWindowService
+    internal static class DataViewCreateWindowService
     {
         private static DataViewWindow s_dataViewWindow = null;
 
