@@ -11,12 +11,12 @@ namespace CommunalPayments.Wpf.Services
     {
         public static void Information(string information)
         {
-            MessageBox.Show(information, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(information, "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public static void Error(string error)
         {
-            MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(error, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
