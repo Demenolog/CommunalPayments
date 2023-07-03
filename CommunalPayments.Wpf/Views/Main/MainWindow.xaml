@@ -29,7 +29,7 @@
                         Margin="5">
                 <StackPanel Orientation="Horizontal">
                     <DockPanel>
-                        <Label Content="Год:" />
+                        <Label Content="Расчет показаний на год:" />
                         <ComboBox SelectedItem="{Binding CalculationYear}"
                                   SelectedIndex="0">
                             <sys:String>2021</sys:String>
@@ -38,7 +38,7 @@
                         </ComboBox>
                     </DockPanel>
                     <DockPanel>
-                        <Label Content="Месяц:"></Label>
+                        <Label Content="месяц:" />
                         <ComboBox SelectedItem="{Binding CalculationMonth}"
                                   SelectedIndex="0"
                                   ItemsSource="{Binding Source={services:EnumBindingSourceExtensionService {x:Type enums:Months}}}" />
