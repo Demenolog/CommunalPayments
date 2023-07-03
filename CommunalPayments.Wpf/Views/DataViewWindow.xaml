@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CommunalPayments.Wpf.Views"
         mc:Ignorable="d"
         DataContext="{Binding Path=DataViewWindowModel, Source={StaticResource Locator}}"
-        Title="DataViewWindow" 
+        Title="{Binding Title}" 
         ResizeMode="CanMinimize"
         Height="450" Width="800">
     <Grid>
