@@ -9,6 +9,7 @@ using System.Windows.Input;
 using CommunalPayments.Wpf.Models;
 using CommunalPayments.Wpf.Services;
 using CommunalPayments.Common.DataContext.Sqlite;
+using CommunalPayments.Wpf.Infrastructure.Enums;
 
 namespace CommunalPayments.Wpf.ViewModels
 {
@@ -622,6 +623,22 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion SaveCalculation command
 
+        #region GetLatestData command
+
+        public ICommand GetLatestData { get; }
+
+        private bool CanGetLatestDataExecuted(object p) => IsMeteringDevicesColdSelected && IsMeteringDevicesHotSelected && IsMeteringDevicesEnergySelected;
+
+        private void OnGetLatestDataExecute(object p)
+        {
+            var year = CalculationYear;
+            var month = CalculationMonth;
+
+            DatabaseControlService.GetLatestData(year, month);
+        }
+
+        #endregion GetLatestData command
+
         #endregion Блок - Кнопок
 
         public MainWindowViewModel()
@@ -629,6 +646,8 @@ namespace CommunalPayments.Wpf.ViewModels
             MakeCalculation = new LambdaCommand(OnMakeCalculationExecute, CanMakeCalculationExecuted);
 
             SaveCalculation = new LambdaCommand(OnSaveCalculationExecute, CanSaveCalculationExecuted);
+
+            GetLatestData = new LambdaCommand(OnGetLatestDataExecute, CanGetLatestDataExecuted);
         }
     }
 }

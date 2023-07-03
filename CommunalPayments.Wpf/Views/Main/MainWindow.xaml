@@ -28,7 +28,7 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <DockPanel>
-                        <Label Content="Год:"></Label>
+                        <Label Content="Год:" />
                         <ComboBox SelectedItem="{Binding CalculationYear}"
                                   SelectedIndex="0">
                             <sys:String>2021</sys:String>
@@ -217,7 +217,9 @@
                 <Button Command="{Binding SaveCalculation}"
                         Margin="5"
                         Content="Сохранить расчет"/>
-                <Button Margin="5">Test</Button>
+                <Button Command="{Binding GetLatestData}"
+                        Margin="5"
+                        Content="Получить прошлые данные"/>
             </StackPanel>
         </StackPanel>
         <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
