@@ -2,14 +2,18 @@
 using CommunalPayments.Wpf.Infrastructure.Enums;
 using CommunalPayments.Wpf.ViewModels;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Windows;
+using CommunalPayments.Common.DataContext.Sqlite.Models;
 
 namespace CommunalPayments.Wpf.Services
 {
     internal static class DatabaseControlService
     {
         private static readonly MainWindowViewModel MainWindow = new ViewModelLocator().MainWindowModel;
+        private static readonly DataViewWindowViewModel DataViewWindow = new ViewModelLocator().DataViewWindowModel;
+
 
         public static SQLiteConnection GetConnection()
         {
@@ -80,7 +84,19 @@ namespace CommunalPayments.Wpf.Services
 
         public static void UpdateDataGrid()
         {
-            var db = new ReceiptDb();
+            using (var db = new ReceiptDb())
+            {
+                if (db.IsAnyData())
+                {
+                    var data = db.GetAllData();
+
+                    DataViewWindow.Receipts = new ObservableCollection<ReceiptData>(data);
+                }
+                else
+                {
+                    MessageBox.Show("Данных нет");
+                }
+            }
         }
     }
 }
