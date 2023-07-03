@@ -10,5 +10,7 @@ namespace CommunalPayments.Wpf.ViewModels
     internal class ViewModelLocator
     {
         public MainWindowViewModel MainWindowModel => App.Services.GetRequiredService<MainWindowViewModel>();
+
+        public DataViewWindowViewModel DataViewWindowModel => App.Services.GetRequiredService<DataViewWindowViewModel>();
     }
 }
