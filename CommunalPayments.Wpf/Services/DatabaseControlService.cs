@@ -39,7 +39,7 @@ namespace CommunalPayments.Wpf.Services
 
             var db = new ReceiptDb();
 
-            var result = db.Insert(storedValues);
+            var result = db.InsertData(storedValues);
 
             MessageBox.Show($"Команда завершилась с результатом - {result}");
         }
@@ -74,6 +74,11 @@ namespace CommunalPayments.Wpf.Services
             {
                 MessageBox.Show("Данных нет");
             }
+        }
+
+        public static void UpdateDataGrid()
+        {
+
         }
     }
 }

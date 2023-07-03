@@ -18,7 +18,7 @@ namespace CommunalPayments.Common.DataContext.Sqlite
             return _connection;
         }
 
-        public bool Insert(List<string> storedValues)
+        public bool InsertData(List<string> storedValues)
         {
             try
             {
