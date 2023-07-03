@@ -1,11 +1,12 @@
 ﻿using CommunalPayments.Common.DataContext.Sqlite;
+using CommunalPayments.Common.DataContext.Sqlite.Models;
 using CommunalPayments.Wpf.Infrastructure.Enums;
 using CommunalPayments.Wpf.ViewModels;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Windows;
-using CommunalPayments.Common.DataContext.Sqlite.Models;
+using System.Windows.Markup;
 
 namespace CommunalPayments.Wpf.Services
 {
@@ -13,7 +14,6 @@ namespace CommunalPayments.Wpf.Services
     {
         private static readonly MainWindowViewModel MainWindow = new ViewModelLocator().MainWindowModel;
         private static readonly DataViewWindowViewModel DataViewWindow = new ViewModelLocator().DataViewWindowModel;
-
 
         public static SQLiteConnection GetConnection()
         {
@@ -91,6 +91,29 @@ namespace CommunalPayments.Wpf.Services
                     var data = db.GetAllData();
 
                     DataViewWindow.Receipts = new ObservableCollection<ReceiptData>(data);
+                }
+                else
+                {
+                    DataViewWindow.Receipts = new ObservableCollection<ReceiptData>();
+                    MessageBox.Show("Данных нет");
+                }
+            }
+        }
+
+        public static void DeleteData(int deleteNumber)
+        {
+            using (var db = new ReceiptDb())
+            {
+                if (db.IsAnyData())
+                {
+                    if (db.DeleteData(deleteNumber))
+                    {
+                        UpdateDataGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка");
+                    }
                 }
                 else
                 {

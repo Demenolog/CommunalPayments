@@ -45,6 +45,29 @@ namespace CommunalPayments.Common.DataContext.Sqlite
             }
         }
 
+        public bool DeleteData(int deleteNumber)
+        {
+            var connection = GetConnection();
+            var query = @"DELETE FROM Receipt WHERE Id = @Id;";
+
+            try
+            {
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("Id", deleteNumber);
+
+                    var rowsAffected = command.ExecuteNonQuery();
+
+                    return (rowsAffected > 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
         public List<string> GetPreviousData(string year, string month)
         {
             try

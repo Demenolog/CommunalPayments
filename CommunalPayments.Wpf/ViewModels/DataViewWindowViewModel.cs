@@ -72,6 +72,9 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnDeleteDataExecute(object p)
         {
+            var deleteNumber = int.Parse(DeleteNumber);
+
+            DatabaseControlService.DeleteData(deleteNumber);
         }
 
         #endregion DeleteData command
