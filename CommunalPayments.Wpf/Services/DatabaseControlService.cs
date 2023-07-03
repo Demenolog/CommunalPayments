@@ -1,12 +1,8 @@
-﻿using System;
+﻿using CommunalPayments.Common.DataContext.Sqlite;
+using CommunalPayments.Wpf.ViewModels;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using CommunalPayments.Common.DataContext.Sqlite;
-using CommunalPayments.Wpf.ViewModels;
 
 namespace CommunalPayments.Wpf.Services
 {
@@ -44,6 +40,32 @@ namespace CommunalPayments.Wpf.Services
             var result = db.Insert(storedValues);
 
             MessageBox.Show($"Команда завершилась с результатом - {result}");
+        }
+
+        public static void GetLatestData(string year, string month)
+        {
+            if (new ReceiptDb().IsPreviousDataExist(year, month))
+            {
+                var db = new ReceiptDb();
+
+                var result = db.GetPreviousData(year, month);
+
+                if (result != null)
+                {
+                    MainWindow.InstrumentPreviousValueCold = result[0];
+                    MainWindow.InstrumentPreviousValueHot = result[1];
+                    MainWindow.InstrumentPreviousValueEnergyDay = result[2];
+                    MainWindow.InstrumentPreviousValueEnergyNight = result[3];
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Данных нет");
+            }
         }
     }
 }
