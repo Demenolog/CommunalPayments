@@ -23,6 +23,7 @@ namespace CommunalPayments.Wpf.Services
             //DataViewWindow.Icon = new BitmapImage(new Uri("pack://application:,,,/Resources/Icons/Secondary/Gear.ico"));
 
             ChildWindowService.Add(DataViewWindow);
+            DatabaseControlService.UpdateDataGrid();
         }
 
         public static bool Show()
