@@ -59,9 +59,11 @@
                 Margin="15" />
             <StackPanel Orientation="Horizontal"
                         Margin="10">
-                <Button Content="Удалить строку"
+                <Button Command="{Binding DeleteData}"
+                    Content="Удалить строку"
                         Margin="5" />
-                <TextBox Text="Номер строки"
+                <TextBox Text="{Binding DeleteNumber}"
+                         Width="30"
                          Margin="5" />
             </StackPanel>
         </StackPanel>

@@ -1,10 +1,9 @@
 ﻿using CommunalPayments.Common.DataContext.Sqlite.Models;
 using CommunalPayments.Wpf.Infrastructure.Commands;
+using CommunalPayments.Wpf.Services;
 using CommunalPayments.Wpf.ViewModels.Base;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
 using System.Windows.Input;
-using CommunalPayments.Wpf.Services;
 
 namespace CommunalPayments.Wpf.ViewModels
 {
@@ -24,7 +23,19 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion Title : string - Заголовок окна
 
-        #region Receipts : ObservableCollection<ReceiptData> - Данные из БД
+        #region DeleteNumber : string - Номер строки для удаления
+
+        private string _deleteNumber;
+
+        public string DeleteNumber
+        {
+            get => _deleteNumber;
+            set => SetField(ref _deleteNumber, value);
+        }
+
+        #endregion DeleteNumber : string - Номер строки для удаления
+
+        #region Receipts : ObservableCollection<ReceiptData> - Данные из БД для dataGrid
 
         private ObservableCollection<ReceiptData> _receipts;
 
@@ -34,7 +45,11 @@ namespace CommunalPayments.Wpf.ViewModels
             set => SetField(ref _receipts, value);
         }
 
-        #endregion Receipts : ObservableCollection<ReceiptData> - Данные из БД
+        #endregion Receipts : ObservableCollection<ReceiptData> - Данные из БД для dataGrid
+
+        #endregion Свойства
+
+        #region Команды
 
         #region UpdateDataGrid command
 
@@ -49,11 +64,25 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion UpdateDataGrid command
 
-        #endregion Свойства
+        #region DeleteData command
+
+        public ICommand DeleteData { get; }
+
+        private bool CanDeleteDataExecuted(object p) => true;
+
+        private void OnDeleteDataExecute(object p)
+        {
+        }
+
+        #endregion DeleteData command
+
+        #endregion Команды
 
         public DataViewWindowViewModel()
         {
             UpdateDataGrid = new LambdaCommand(OnUpdateDataGridExecute, CanUpdateDataGridExecuted);
+
+            DeleteData = new LambdaCommand(OnDeleteDataExecute, CanDeleteDataExecuted);
         }
     }
 }
