@@ -131,7 +131,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region InstrumentPreviousValueCold : string - Предыдущие значение счётчика для ХВС
 
-        private string _instrumentPreviousValueCold = "lastValFromDb";
+        private string _instrumentPreviousValueCold;
 
         public string InstrumentPreviousValueCold
         {
@@ -205,7 +205,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region InstrumentPreviousValueHot : string - Предыдущие значение счётчика для ГВС
 
-        private string _instrumentPreviousValueHot = "lastValFromDb";
+        private string _instrumentPreviousValueHot;
 
         public string InstrumentPreviousValueHot
         {
@@ -315,7 +315,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region InstrumentPreviousValueEnergyDay : string - Предыдущие значение счётчика для ЭЭ - дневная шкала
 
-        private string _instrumentPreviousValueEnergyDay = "lastValFromDb";
+        private string _instrumentPreviousValueEnergyDay;
 
         public string InstrumentPreviousValueEnergyDay
         {
@@ -339,7 +339,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #region InstrumentPreviousValueEnergyNight : string - Предыдущие значение счётчика для ЭЭ - ночная шкала
 
-        private string _instrumentPreviousValueEnergyNight = "lastValFromDb";
+        private string _instrumentPreviousValueEnergyNight;
 
         public string InstrumentPreviousValueEnergyNight
         {
