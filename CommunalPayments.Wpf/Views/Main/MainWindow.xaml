@@ -10,7 +10,7 @@
         DataContext="{Binding Path=MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Path=Title}"
         ResizeMode="CanMinimize"
-        Height="775"
+        Height="800"
         Width="875">
     <Grid>
         <Grid.RowDefinitions>
@@ -213,23 +213,23 @@
             <StackPanel Margin="5">
                 <Label Content="Основные команды"
                        HorizontalAlignment="Center" />
-                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                <Button Style="{StaticResource ButtonDefaultStyle}"
                         Command="{Binding MakeCalculation}"
                         Content="Произвести расчет" />
-                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                <Button Style="{StaticResource ButtonDefaultStyle}"
                         Command="{Binding SaveCalculation}"
                         Content="Сохранить расчет" />
                 <Label Content="Дополнительные команды"
                        HorizontalAlignment="Center" />
-                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                <Button Style="{StaticResource ButtonDefaultStyle}"
                         Command="{Binding OpenDataViewWindow}"
                         Content="Список прошлых расчетов" />
-                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                <Button Style="{StaticResource ButtonDefaultStyle}"
                         Command="{Binding GetPreviousData}"
                         Content="Подставить предыдущие показания" />
-                <Button Style="{StaticResource ButtonDefaultStyle}" 
-                        Command="{Binding GetPreviousData}"
-                        Content="Очистить расчеты показаний" />
+                <Button Style="{StaticResource ButtonDefaultStyle}"
+                        Command="{Binding ClearCalculation}"
+                        Content="Очистить результаты расчета" />
             </StackPanel>
         </StackPanel>
         <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"

@@ -649,7 +649,6 @@ namespace CommunalPayments.Wpf.ViewModels
             DataViewWindowService.Show();
         }
 
-
         #endregion OpenDataViewWindow command
 
         #region ClearCalculation command
@@ -660,9 +659,8 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnClearCalculationExecute(object p)
         {
-
+            ClearCalculationService.Clear();
         }
-
 
         #endregion ClearCalculation command
 
