@@ -30,7 +30,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string DeleteNumber
         {
             get => _deleteNumber;
-            set => SetField(ref _deleteNumber, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntNumber(value))
+                {
+                    SetField(ref _deleteNumber, value);
+                }
+            }
         }
 
         #endregion DeleteNumber : string - Номер строки для удаления

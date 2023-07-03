@@ -63,7 +63,7 @@
                 <Button Command="{Binding DeleteData}"
                     Content="Удалить строку с Id:"
                         Margin="5" />
-                <TextBox Text="{Binding DeleteNumber}"
+                <TextBox Text="{Binding DeleteNumber, UpdateSourceTrigger=PropertyChanged}"
                          Width="30"
                          Margin="5" />
             </StackPanel>
