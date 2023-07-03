@@ -1,4 +1,6 @@
 ﻿using CommunalPayments.Wpf.Views;
+using System;
+using System.Windows.Media.Imaging;
 
 namespace CommunalPayments.Wpf.Services
 {
@@ -20,7 +22,7 @@ namespace CommunalPayments.Wpf.Services
 
             DataViewWindow = new DataViewWindow();
             DataViewWindow.Closed += (o, args) => DataViewWindow = null;
-            //DataViewWindow.Icon = new BitmapImage(new Uri("pack://application:,,,/Resources/Icons/Secondary/Gear.ico"));
+            DataViewWindow.Icon = new BitmapImage(new Uri("pack://application:,,,/Resources/Icons/DatabaseIcon.ico"));
 
             ChildWindowService.Add(DataViewWindow);
             DatabaseControlService.UpdateDataGrid();
