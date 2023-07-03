@@ -633,6 +633,22 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion GetPreviousData command
 
+        #region OpenDataViewWindow command
+
+        public ICommand OpenDataViewWindow { get; }
+
+        private bool CanOpenDataViewWindowExecuted(object p) => true;
+
+        private void OnOpenDataViewWindowExecute(object p)
+        {
+            DataViewWindowService.Create();
+
+            DataViewWindowService.Show();
+        }
+
+
+        #endregion OpenDataViewWindow command
+
         #endregion Блок - Кнопоки
 
         public MainWindowViewModel()
@@ -642,6 +658,8 @@ namespace CommunalPayments.Wpf.ViewModels
             SaveCalculation = new LambdaCommand(OnSaveCalculationExecute, CanSaveCalculationExecuted);
 
             GetPreviousData = new LambdaCommand(OnGetPreviousDataExecute, CanGetPreviousDataExecuted);
+
+            OpenDataViewWindow = new LambdaCommand(OnOpenDataViewWindowExecute, CanOpenDataViewWindowExecuted);
         }
     }
 }

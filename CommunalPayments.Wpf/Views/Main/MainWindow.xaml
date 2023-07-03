@@ -10,7 +10,7 @@
         DataContext="{Binding Path=MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Path=Title}"
         ResizeMode="CanMinimize"
-        Height="725" 
+        Height="775"
         Width="875">
     <Grid>
         <Grid.RowDefinitions>
@@ -55,171 +55,178 @@
             <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
                       VerticalAlignment="Top"
                   Header="Показания приборов">
-            <StackPanel Orientation="Vertical">
-                <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
+                <StackPanel Orientation="Vertical">
+                    <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
                           Header="Холодное водоснабжение">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0"
                                     Orientation="Vertical">
-                            <CheckBox Content="Приборы учета"
+                                <CheckBox Content="Приборы учета"
                                       IsChecked="{Binding IsMeteringDevicesColdSelected, UpdateSourceTrigger=PropertyChanged}" />
-                            <Grid IsEnabled="{Binding IsMeteringDevicesColdSelected}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <DockPanel Grid.Row="0">
-                                    <Label Content="Текущие показания:" />
-                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                <Grid IsEnabled="{Binding IsMeteringDevicesColdSelected}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <DockPanel Grid.Row="0">
+                                        <Label Content="Текущие показания:" />
+                                        <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                              Text="{Binding InstrumentCurrentValueCold}" />
-                                </DockPanel>
-                                <DockPanel Grid.Row="1">
-                                    <Label Content="Предыдущие показания:" />
-                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                             Text="{Binding InstrumentPreviousValueCold}"/>
-                                </DockPanel>
-                            </Grid>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1"
-                                    Orientation="Vertical">
-                            <CheckBox Content="Нормативный объем"
-                                      IsChecked="{Binding IsStandardVolumeColdSelected, UpdateSourceTrigger=PropertyChanged}" />
-                            <DockPanel IsEnabled="{Binding IsStandardVolumeColdSelected}">
-                                <Label Content="Норматив за человека:" />
-                                <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                         Text="{Binding NormPerPersonCold}"/>
-                            </DockPanel>
-                        </StackPanel>
-                    </Grid>
-                </GroupBox>
-                <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
-                          Header="Горячее водоснабжение">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0"
-                                    Orientation="Vertical">
-                            <CheckBox Content="Приборы учета"
-                                      IsChecked="{Binding IsMeteringDevicesHotSelected, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Grid IsEnabled="{Binding IsMeteringDevicesHotSelected}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <DockPanel Grid.Row="0">
-                                    <Label Content="Текущие показания:" />
-                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                             Text="{Binding InstrumentCurrentValueHot}" />
-                                </DockPanel>
-                                <DockPanel Grid.Row="1">
-                                    <Label Content="Предыдущие показания:" />
-                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                             Text="{Binding InstrumentPreviousValueHot}"/>
-                                </DockPanel>
-                            </Grid>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1"
-                                    Orientation="Vertical">
-                            <CheckBox Content="Нормативный объем"
-                                      IsChecked="{Binding IsStandardVolumeHotSelected, UpdateSourceTrigger=PropertyChanged}"/>
-                            <DockPanel Grid.Row="1"
-                                       IsEnabled="{Binding IsStandardVolumeHotSelected}">
-                                <Label Content="«ГВС Теплоноситель»:"/>
-                                <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                         Text="{Binding  NormPerPersonHotHeatCarrier}">
-                                </TextBox>
-                            </DockPanel>
-                            <DockPanel Grid.Row="1"
-                                       IsEnabled="{Binding IsStandardVolumeHotSelected}">
-                                <Label Content="«ГВС Тепловая энергия»:"/>
-                                <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                         Text="{Binding  NormPerPersonHotHeatEnergy}">
-                                </TextBox>
-                            </DockPanel>
-                        </StackPanel>
-                    </Grid>
-                </GroupBox>
-                <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
-                          Header="Электроэнергия">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0"
-                                    Orientation="Vertical">
-                            <CheckBox Content="Приборы учета" 
-                                      IsChecked="{Binding IsMeteringDevicesEnergySelected, UpdateSourceTrigger=PropertyChanged}"/>
-                            <StackPanel Orientation="Vertical"
-                                        IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
-                                <Label Content="Дневная шкала" />
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <DockPanel Grid.Row="0">
-                                        <Label Content="Текущие показания:" />
-                                        <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                                 Text="{Binding InstrumentCurrentValueEnergyDay}"/>
                                     </DockPanel>
                                     <DockPanel Grid.Row="1">
                                         <Label Content="Предыдущие показания:" />
                                         <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                                 Text="{Binding InstrumentPreviousValueEnergyDay}"/>
-                                    </DockPanel>
-                                </Grid>
-                                <Label Content="Ночная шкала" />
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <DockPanel Grid.Row="0">
-                                        <Label Content="Текущие показания:" />
-                                        <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                                 Text="{Binding InstrumentCurrentValueEnergyNight}"/>
-                                    </DockPanel>
-                                    <DockPanel Grid.Row="1">
-                                        <Label Content="Предыдущие показания:" />
-                                        <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                                 Text="{Binding InstrumentPreviousValueEnergyNight}"/>
+                                             Text="{Binding InstrumentPreviousValueCold}" />
                                     </DockPanel>
                                 </Grid>
                             </StackPanel>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1"
+                            <StackPanel Grid.Column="1"
                                     Orientation="Vertical">
-                            <CheckBox Content="Нормативный объем"
-                                      IsChecked="{Binding IsStandardVolumeEnergySelected, UpdateSourceTrigger=PropertyChanged}"/>
-                            <DockPanel Grid.Row="1"
+                                <CheckBox Content="Нормативный объем"
+                                      IsChecked="{Binding IsStandardVolumeColdSelected, UpdateSourceTrigger=PropertyChanged}" />
+                                <DockPanel IsEnabled="{Binding IsStandardVolumeColdSelected}">
+                                    <Label Content="Норматив за человека:" />
+                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                         Text="{Binding NormPerPersonCold}" />
+                                </DockPanel>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
+                          Header="Горячее водоснабжение">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0"
+                                    Orientation="Vertical">
+                                <CheckBox Content="Приборы учета"
+                                      IsChecked="{Binding IsMeteringDevicesHotSelected, UpdateSourceTrigger=PropertyChanged}" />
+                                <Grid IsEnabled="{Binding IsMeteringDevicesHotSelected}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <DockPanel Grid.Row="0">
+                                        <Label Content="Текущие показания:" />
+                                        <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                             Text="{Binding InstrumentCurrentValueHot}" />
+                                    </DockPanel>
+                                    <DockPanel Grid.Row="1">
+                                        <Label Content="Предыдущие показания:" />
+                                        <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                             Text="{Binding InstrumentPreviousValueHot}" />
+                                    </DockPanel>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1"
+                                    Orientation="Vertical">
+                                <CheckBox Content="Нормативный объем"
+                                      IsChecked="{Binding IsStandardVolumeHotSelected, UpdateSourceTrigger=PropertyChanged}" />
+                                <DockPanel Grid.Row="1"
+                                       IsEnabled="{Binding IsStandardVolumeHotSelected}">
+                                    <Label Content="«ГВС Теплоноситель»:" />
+                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                         Text="{Binding  NormPerPersonHotHeatCarrier}">
+                                    </TextBox>
+                                </DockPanel>
+                                <DockPanel Grid.Row="1"
+                                       IsEnabled="{Binding IsStandardVolumeHotSelected}">
+                                    <Label Content="«ГВС Тепловая энергия»:" />
+                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                         Text="{Binding  NormPerPersonHotHeatEnergy}">
+                                    </TextBox>
+                                </DockPanel>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
+                          Header="Электроэнергия">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0"
+                                    Orientation="Vertical">
+                                <CheckBox Content="Приборы учета"
+                                      IsChecked="{Binding IsMeteringDevicesEnergySelected, UpdateSourceTrigger=PropertyChanged}" />
+                                <StackPanel Orientation="Vertical"
+                                        IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
+                                    <Label Content="Дневная шкала" />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <DockPanel Grid.Row="0">
+                                            <Label Content="Текущие показания:" />
+                                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                                 Text="{Binding InstrumentCurrentValueEnergyDay}" />
+                                        </DockPanel>
+                                        <DockPanel Grid.Row="1">
+                                            <Label Content="Предыдущие показания:" />
+                                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                                 Text="{Binding InstrumentPreviousValueEnergyDay}" />
+                                        </DockPanel>
+                                    </Grid>
+                                    <Label Content="Ночная шкала" />
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <DockPanel Grid.Row="0">
+                                            <Label Content="Текущие показания:" />
+                                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                                 Text="{Binding InstrumentCurrentValueEnergyNight}" />
+                                        </DockPanel>
+                                        <DockPanel Grid.Row="1">
+                                            <Label Content="Предыдущие показания:" />
+                                            <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                                 Text="{Binding InstrumentPreviousValueEnergyNight}" />
+                                        </DockPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1"
+                                    Orientation="Vertical">
+                                <CheckBox Content="Нормативный объем"
+                                      IsChecked="{Binding IsStandardVolumeEnergySelected, UpdateSourceTrigger=PropertyChanged}" />
+                                <DockPanel Grid.Row="1"
                                        IsEnabled="{Binding IsStandardVolumeEnergySelected}">
-                                <Label Content="Норматив за человека:" />
-                                <TextBox Style="{StaticResource TextBoxDefaultStyle}"
+                                    <Label Content="Норматив за человека:" />
+                                    <TextBox Style="{StaticResource TextBoxDefaultStyle}"
                                          Text="{Binding NormPerPersonEnergy}">
-                                </TextBox>
-                            </DockPanel>
-                        </StackPanel>
-                    </Grid>
-                </GroupBox>
-            </StackPanel>
-        </GroupBox>
+                                    </TextBox>
+                                </DockPanel>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                </StackPanel>
+            </GroupBox>
             <StackPanel Margin="5">
+                <Label Content="Основные команды"
+                       HorizontalAlignment="Center" />
                 <Button Command="{Binding MakeCalculation}"
                         Margin="5"
-                        Content="Произвести расчет"/>
+                        Content="Произвести расчет" />
                 <Button Command="{Binding SaveCalculation}"
                         Margin="5"
-                        Content="Сохранить расчет"/>
+                        Content="Сохранить расчет" />
+                <Label Content="Дополнительные команды"
+                       HorizontalAlignment="Center" />
+                <Button Command="{Binding OpenDataViewWindow}"
+                        Margin="5"
+                        Content="Просмотреть прошлые данные" />
                 <Button Command="{Binding GetPreviousData}"
                         Margin="5"
-                        Content="Получить прошлые данные"/>
+                        Content="Получить прошлые данные" />
             </StackPanel>
         </StackPanel>
         <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"
@@ -227,9 +234,9 @@
                   Grid.Column="1"
                   Grid.Row="0"
                   Grid.RowSpan="2">
-        <Grid>
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
                     <Label Content="Холодное водоснабжение"
@@ -238,17 +245,17 @@
                         <DockPanel>
                             <Label Content="Объем потребления ХВС:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueCold}"/>
+                                     Text="{Binding ConsumptionValueCold}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Тариф:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateCold}"/>
+                                     Text="{Binding RateCold}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за ХВС:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesCold}"/>
+                                     Text="{Binding ServiceChargesCold}" />
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Горячее водоснабжение"
@@ -257,37 +264,37 @@
                         <DockPanel>
                             <Label Content="Объем потребления «ГВС Теплоноситель»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueHotHeatCarrier}"/>
+                                     Text="{Binding ConsumptionValueHotHeatCarrier}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Объем потребления «ГВС Тепловая энергия»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueHotHeatEnergy}"/>
+                                     Text="{Binding ConsumptionValueHotHeatEnergy}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesHotSelected}">
                             <Label Content="Норматив за подогрев 1 м^3:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding NormPerCubicMeter}"/>
+                                     Text="{Binding NormPerCubicMeter}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Тариф «ГВС Теплоноситель»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateHotHeatCarrier}"/>
+                                     Text="{Binding RateHotHeatCarrier}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Тариф «ГВС Тепловая энергия»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateHotHeatEnergy}"/>
+                                     Text="{Binding RateHotHeatEnergy}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за «ГВС Теплоноситель»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesHotHeatCarrier}"/>
+                                     Text="{Binding ServiceChargesHotHeatCarrier}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за «ГВС Тепловая энергия»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesHotHeatEnergy}"/>
+                                     Text="{Binding ServiceChargesHotHeatEnergy}" />
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Электроэнергия"
@@ -296,37 +303,37 @@
                         <DockPanel IsEnabled="{Binding IsStandardVolumeEnergySelected}">
                             <Label Content="Общий объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueEnergyGeneral}"/>
+                                     Text="{Binding ConsumptionValueEnergyGeneral}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Дневной объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueEnergyDay}"/>
+                                     Text="{Binding ConsumptionValueEnergyDay}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Ночной объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueEnergyNight}"/>
+                                     Text="{Binding ConsumptionValueEnergyNight}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Дневной тариф: " />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateEnergyDay}"/>
+                                     Text="{Binding RateEnergyDay}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Ночной тариф:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateEnergyNight}"/>
+                                     Text="{Binding RateEnergyNight}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsStandardVolumeEnergySelected}">
                             <Label Content="Общий тариф:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateEnergyGeneral}"/>
+                                     Text="{Binding RateEnergyGeneral}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за ЭЭ:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesEnergy}"/>
+                                     Text="{Binding ServiceChargesEnergy}" />
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Итого"
@@ -335,7 +342,7 @@
                         <DockPanel>
                             <Label Content="Общая сумма начислений:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesTotal}"/>
+                                     Text="{Binding ServiceChargesTotal}" />
                         </DockPanel>
                     </StackPanel>
                 </StackPanel>
