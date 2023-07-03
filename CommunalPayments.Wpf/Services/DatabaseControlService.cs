@@ -53,11 +53,11 @@ namespace CommunalPayments.Wpf.Services
                         UpdateDataGrid();
                     }
 
-                    MessageBox.Show($"Команда завершилась с результатом - {result}");
+                    UserAlertService.Information("Команда завершилась успешно");
                 }
                 else
                 {
-                    MessageBox.Show("Данные за этот период уже существуют !");
+                    UserAlertService.Error("Данные за этот период уже существуют !");
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace CommunalPayments.Wpf.Services
                 else
                 {
                     DataViewWindow.Receipts = new ObservableCollection<ReceiptData>();
-                    MessageBox.Show("Данных нет");
+                    UserAlertService.Information("Данные отсутствуют");
                 }
             }
         }
@@ -129,12 +129,12 @@ namespace CommunalPayments.Wpf.Services
                     }
                     else
                     {
-                        MessageBox.Show("Ошибка");
+                       UserAlertService.Error("Возникла ошибка");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Данных нет");
+                    UserAlertService.Information("Данные отсутствуют");
                 }
             }
         }
