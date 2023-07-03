@@ -49,7 +49,7 @@ namespace CommunalPayments.Wpf.Services
             }
         }
 
-        public static void GetLatestData(string year, string month)
+        public static void GetPreviousData(string year, string month)
         {
             if (month == "Январь")
             {

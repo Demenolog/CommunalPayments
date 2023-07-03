@@ -628,7 +628,7 @@ namespace CommunalPayments.Wpf.ViewModels
             var year = CalculationYear;
             var month = CalculationMonth;
 
-            DatabaseControlService.GetLatestData(year, month);
+            DatabaseControlService.GetPreviousData(year, month);
         }
 
         #endregion GetPreviousData command
