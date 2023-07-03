@@ -23,90 +23,64 @@ namespace CommunalPayments.Wpf.Models
 
         private static void CalculateMeteringDevices()
         {
-            try
-            {
-                decimal instrumentCurrentValue;
-                decimal instrumentPreviousValue;
-                decimal rateHeatCarrier;
-                decimal rateHeatEnergy;
-                decimal normPerMeter;
-                decimal consumptionValueHeatCarrier;
-                decimal consumptionValueHeatEnergy;
-                decimal serviceChargesHeatCarrier;
-                decimal serviceChargesHeatEnergy;
+            decimal instrumentCurrentValue;
+            decimal instrumentPreviousValue;
+            decimal rateHeatCarrier;
+            decimal rateHeatEnergy;
+            decimal normPerMeter;
+            decimal consumptionValueHeatCarrier;
+            decimal consumptionValueHeatEnergy;
+            decimal serviceChargesHeatCarrier;
+            decimal serviceChargesHeatEnergy;
 
-                checked
-                {
-                    instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueHot);
-                    instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueHot);
-                    rateHeatCarrier = decimal.Parse(MainWindow.RateHotHeatCarrier);
-                    rateHeatEnergy = decimal.Parse(MainWindow.RateHotHeatEnergy);
-                    normPerMeter = decimal.Parse(MainWindow.NormPerCubicMeter);
-
-                    consumptionValueHeatCarrier = instrumentCurrentValue - instrumentPreviousValue;
-                    consumptionValueHeatEnergy = consumptionValueHeatCarrier * normPerMeter;
-
-                    serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
-                    serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
-                }
-
-                SetValues(consumptionValueHeatCarrier, consumptionValueHeatEnergy, serviceChargesHeatCarrier,
-                    serviceChargesHeatEnergy);
-            }
-            catch (OverflowException ex)
+            checked
             {
-                throw;
+                instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueHot);
+                instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueHot);
+                rateHeatCarrier = decimal.Parse(MainWindow.RateHotHeatCarrier);
+                rateHeatEnergy = decimal.Parse(MainWindow.RateHotHeatEnergy);
+                normPerMeter = decimal.Parse(MainWindow.NormPerCubicMeter);
+
+                consumptionValueHeatCarrier = instrumentCurrentValue - instrumentPreviousValue;
+                consumptionValueHeatEnergy = consumptionValueHeatCarrier * normPerMeter;
+
+                serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
+                serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
             }
-            catch (ArgumentNullException ex)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+
+            SetValues(consumptionValueHeatCarrier, consumptionValueHeatEnergy, serviceChargesHeatCarrier,
+                serviceChargesHeatEnergy);
         }
 
         private static void CalculateStandardVolume()
         {
-            try
+            int numberResidents;
+            decimal normPerPersonHeatCarrier;
+            decimal normPerPersonHeatEnergy;
+            decimal rateHeatCarrier;
+            decimal rateHeatEnergy;
+            decimal consumptionValueHeatCarrier;
+            decimal consumptionValueHeatEnergy;
+            decimal serviceChargesHeatCarrier;
+            decimal serviceChargesHeatEnergy;
+
+            checked
             {
-                int numberResidents;
-                decimal normPerPersonHeatCarrier;
-                decimal normPerPersonHeatEnergy;
-                decimal rateHeatCarrier;
-                decimal rateHeatEnergy;
-                decimal consumptionValueHeatCarrier;
-                decimal consumptionValueHeatEnergy;
-                decimal serviceChargesHeatCarrier;
-                decimal serviceChargesHeatEnergy;
+                numberResidents = int.Parse(MainWindow.NumberResidents);
+                normPerPersonHeatCarrier = decimal.Parse(MainWindow.NormPerPersonHotHeatCarrier);
+                normPerPersonHeatEnergy = decimal.Parse(MainWindow.NormPerPersonHotHeatEnergy);
+                rateHeatCarrier = decimal.Parse(MainWindow.RateHotHeatCarrier);
+                rateHeatEnergy = decimal.Parse(MainWindow.RateHotHeatEnergy);
 
-                checked
-                {
-                    numberResidents = int.Parse(MainWindow.NumberResidents);
-                    normPerPersonHeatCarrier = decimal.Parse(MainWindow.NormPerPersonHotHeatCarrier);
-                    normPerPersonHeatEnergy = decimal.Parse(MainWindow.NormPerPersonHotHeatEnergy);
-                    rateHeatCarrier = decimal.Parse(MainWindow.RateHotHeatCarrier);
-                    rateHeatEnergy = decimal.Parse(MainWindow.RateHotHeatEnergy);
+                consumptionValueHeatCarrier = numberResidents * normPerPersonHeatCarrier;
+                consumptionValueHeatEnergy = numberResidents * normPerPersonHeatEnergy;
 
-                    consumptionValueHeatCarrier = numberResidents * normPerPersonHeatCarrier;
-                    consumptionValueHeatEnergy = numberResidents * normPerPersonHeatEnergy;
-
-                    serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
-                    serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
-                }
-
-                SetValues(consumptionValueHeatCarrier, consumptionValueHeatEnergy, serviceChargesHeatCarrier,
-                    serviceChargesHeatEnergy);
+                serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
+                serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
             }
-            catch (OverflowException ex)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+
+            SetValues(consumptionValueHeatCarrier, consumptionValueHeatEnergy, serviceChargesHeatCarrier,
+                serviceChargesHeatEnergy);
         }
 
         private static void SetValues(decimal consumptionValueHeatCarrier, decimal consumptionValueHeatEnergy,

@@ -23,70 +23,44 @@ namespace CommunalPayments.Wpf.Models
 
         private static void CalculateMeteringDevices()
         {
-            try
-            {
-                decimal instrumentCurrentValue;
-                decimal instrumentPreviousValue;
-                decimal rate;
-                decimal consumptionValue;
-                decimal serviceCharges;
+            decimal instrumentCurrentValue;
+            decimal instrumentPreviousValue;
+            decimal rate;
+            decimal consumptionValue;
+            decimal serviceCharges;
 
-                checked
-                {
-                    instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueCold);
-                    instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueCold);
-                    rate = decimal.Parse(MainWindow.RateCold);
+            checked
+            {
+                instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueCold);
+                instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueCold);
+                rate = decimal.Parse(MainWindow.RateCold);
 
-                    consumptionValue = instrumentCurrentValue - instrumentPreviousValue;
-                    serviceCharges = consumptionValue * rate;
-                }
+                consumptionValue = instrumentCurrentValue - instrumentPreviousValue;
+                serviceCharges = consumptionValue * rate;
+            }
 
-                SetValues(consumptionValue, serviceCharges);
-            }
-            catch (OverflowException ex)
-            {
-                throw;
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            SetValues(consumptionValue, serviceCharges);
         }
 
         private static void CalculateStandardVolume()
         {
-            try
-            {
-                int numberResidents;
-                decimal normPerPerson;
-                decimal rate;
-                decimal consumptionValue;
-                decimal serviceCharges;
+            int numberResidents;
+            decimal normPerPerson;
+            decimal rate;
+            decimal consumptionValue;
+            decimal serviceCharges;
 
-                checked
-                {
-                    numberResidents = int.Parse(MainWindow.NumberResidents);
-                    normPerPerson = decimal.Parse(MainWindow.NormPerPersonCold);
-                    rate = decimal.Parse(MainWindow.RateCold);
-
-                    consumptionValue = numberResidents * normPerPerson;
-                    serviceCharges = consumptionValue * rate;
-                }
-
-                SetValues(consumptionValue, serviceCharges);
-            }
-            catch (OverflowException ex)
+            checked
             {
-                throw;
+                numberResidents = int.Parse(MainWindow.NumberResidents);
+                normPerPerson = decimal.Parse(MainWindow.NormPerPersonCold);
+                rate = decimal.Parse(MainWindow.RateCold);
+
+                consumptionValue = numberResidents * normPerPerson;
+                serviceCharges = consumptionValue * rate;
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
+
+            SetValues(consumptionValue, serviceCharges);
         }
 
         private static void SetValues(decimal consumptionValue, decimal serviceCharges)

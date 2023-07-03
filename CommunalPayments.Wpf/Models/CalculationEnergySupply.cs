@@ -23,87 +23,60 @@ namespace CommunalPayments.Wpf.Models
 
         private static void CalculateMeteringDevices()
         {
-            try
-            {
-                decimal instrumentCurrentValueDay;
-                decimal instrumentPreviousValueDay;
-                decimal instrumentCurrentValueNight;
-                decimal instrumentPreviousValueNight;
-                decimal rateDay;
-                decimal rateNight;
-                decimal consumptionValueDay;
-                decimal consumptionValueNight;
-                decimal serviceChargesDay;
-                decimal serviceChargesNight;
-                decimal serviceChargesTotal;
+            decimal instrumentCurrentValueDay;
+            decimal instrumentPreviousValueDay;
+            decimal instrumentCurrentValueNight;
+            decimal instrumentPreviousValueNight;
+            decimal rateDay;
+            decimal rateNight;
+            decimal consumptionValueDay;
+            decimal consumptionValueNight;
+            decimal serviceChargesDay;
+            decimal serviceChargesNight;
+            decimal serviceChargesTotal;
 
-                checked
-                {
-                    instrumentCurrentValueDay = decimal.Parse(MainWindow.InstrumentCurrentValueEnergyDay);
-                    instrumentPreviousValueDay = decimal.Parse(MainWindow.InstrumentPreviousValueEnergyDay);
-                    instrumentCurrentValueNight = decimal.Parse(MainWindow.InstrumentCurrentValueEnergyNight);
-                    instrumentPreviousValueNight = decimal.Parse(MainWindow.InstrumentPreviousValueEnergyNight);
-                    rateDay = decimal.Parse(MainWindow.RateEnergyDay);
-                    rateNight = decimal.Parse(MainWindow.RateEnergyNight);
-
-                    consumptionValueDay = instrumentCurrentValueDay - instrumentPreviousValueDay;
-                    consumptionValueNight = instrumentCurrentValueNight - instrumentPreviousValueNight;
-
-                    serviceChargesDay = consumptionValueDay * rateDay;
-                    serviceChargesNight = consumptionValueNight * rateNight;
-                    serviceChargesTotal = serviceChargesDay + serviceChargesNight;
-                }
-
-                MainWindow.ConsumptionValueEnergyDay = consumptionValueDay.ToString(CalculatedValuesFormatConstans.Common);
-                MainWindow.ConsumptionValueEnergyNight = consumptionValueNight.ToString(CalculatedValuesFormatConstans.Common);
-                MainWindow.ServiceChargesEnergy = serviceChargesTotal.ToString(CalculatedValuesFormatConstans.Money);
-            }
-            catch (OverflowException ex)
+            checked
             {
-                throw;
+                instrumentCurrentValueDay = decimal.Parse(MainWindow.InstrumentCurrentValueEnergyDay);
+                instrumentPreviousValueDay = decimal.Parse(MainWindow.InstrumentPreviousValueEnergyDay);
+                instrumentCurrentValueNight = decimal.Parse(MainWindow.InstrumentCurrentValueEnergyNight);
+                instrumentPreviousValueNight = decimal.Parse(MainWindow.InstrumentPreviousValueEnergyNight);
+                rateDay = decimal.Parse(MainWindow.RateEnergyDay);
+                rateNight = decimal.Parse(MainWindow.RateEnergyNight);
+
+                consumptionValueDay = instrumentCurrentValueDay - instrumentPreviousValueDay;
+                consumptionValueNight = instrumentCurrentValueNight - instrumentPreviousValueNight;
+
+                serviceChargesDay = consumptionValueDay * rateDay;
+                serviceChargesNight = consumptionValueNight * rateNight;
+                serviceChargesTotal = serviceChargesDay + serviceChargesNight;
             }
-            catch (ArgumentNullException ex)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+
+            MainWindow.ConsumptionValueEnergyDay = consumptionValueDay.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ConsumptionValueEnergyNight = consumptionValueNight.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesEnergy = serviceChargesTotal.ToString(CalculatedValuesFormatConstans.Money);
         }
 
         private static void CalculateStandardVolume()
         {
-            try
+            int numberResidents;
+            decimal normPerPerson;
+            decimal rateGeneral;
+            decimal consumptionValue;
+            decimal serviceCharges;
+
+            checked
             {
-                int numberResidents;
-                decimal normPerPerson;
-                decimal rateGeneral;
-                decimal consumptionValue;
-                decimal serviceCharges;
+                numberResidents = int.Parse(MainWindow.NumberResidents);
+                normPerPerson = decimal.Parse(MainWindow.NormPerPersonEnergy);
+                rateGeneral = decimal.Parse(MainWindow.RateEnergyGeneral);
 
-                checked
-                {
-                    numberResidents = int.Parse(MainWindow.NumberResidents);
-                    normPerPerson = decimal.Parse(MainWindow.NormPerPersonEnergy);
-                    rateGeneral = decimal.Parse(MainWindow.RateEnergyGeneral);
-
-                    consumptionValue = numberResidents * normPerPerson;
-                    serviceCharges = consumptionValue * rateGeneral;
-                }
-
-                MainWindow.ConsumptionValueEnergyGeneral = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
-                MainWindow.ServiceChargesEnergy = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
-            }
-            catch (OverflowException ex)
-            {
-                throw;
+                consumptionValue = numberResidents * normPerPerson;
+                serviceCharges = consumptionValue * rateGeneral;
             }
 
-            catch (Exception ex)
-            {
-                throw;
-            }
+            MainWindow.ConsumptionValueEnergyGeneral = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesEnergy = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
         }
     }
 }
