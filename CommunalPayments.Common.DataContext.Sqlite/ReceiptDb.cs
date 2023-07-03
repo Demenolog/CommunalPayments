@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunalPayments.Common.DataContext.Sqlite.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 
@@ -89,12 +90,11 @@ namespace CommunalPayments.Common.DataContext.Sqlite
 
         public bool IsPreviousDataExist(string year, string month)
         {
+            var connection = GetConnection();
+            string selectQuery = @"SELECT COUNT(*) FROM Receipt WHERE [Год] = @Year AND [Месяц] = @Month";
+
             try
             {
-                var connection = GetConnection();
-
-                string selectQuery = @"SELECT COUNT(*) FROM Receipt WHERE [Год] = @Year AND [Месяц] = @Month";
-
                 using (var command = new SQLiteCommand(selectQuery, connection))
                 {
                     command.Parameters.AddWithValue("@Year", year);
@@ -104,6 +104,75 @@ namespace CommunalPayments.Common.DataContext.Sqlite
 
                     return result > 0;
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        public List<ReceiptData> GetAllData()
+        {
+            var result = new List<ReceiptData>();
+            var connection = GetConnection();
+            var selectQuery = "SELECT * FROM Receipt";
+
+            try
+            {
+                using (var command = new SQLiteCommand(selectQuery, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var data = new ReceiptData()
+                            {
+                                Id = reader.GetInt32(0),
+                                CalculationYear = reader.GetString(1),
+                                CalculationMonth = reader.GetString(2),
+                                ConsumptionValueCold = reader[3].ToString(),
+                                ServiceChargesCold = reader.GetString(4),
+                                ConsumptionValueHotHeatCarrier = reader[5].ToString(),
+                                ConsumptionValueHotHeatEnergy = reader[6].ToString(),
+                                ServiceChargesHotHeatCarrier = reader.GetString(7),
+                                ServiceChargesHotHeatEnergy = reader.GetString(8),
+                                ConsumptionValueEnergyDay = reader[9].ToString(),
+                                ConsumptionValueEnergyNight = reader[10].ToString(),
+                                ConsumptionValueEnergyGeneral = reader[11].ToString(),
+                                ServiceChargesEnergy = reader.GetString(12),
+                                ServiceChargesTotal = reader.GetString(13),
+                            };
+
+                            result.Add(data);
+                        }
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        public bool IsAnyData()
+        {
+            var connection = GetConnection();
+            var selectQuery = "SELECT 1 FROM Receipt LIMIT 1";
+
+            try
+            {
+                int result;
+
+                using (var command = new SQLiteCommand(selectQuery, connection))
+                {
+                    result = command.ExecuteNonQuery();
+                }
+
+                return result > 0;
             }
             catch (Exception ex)
             {
