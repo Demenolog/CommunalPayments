@@ -1,10 +1,6 @@
 ﻿using CommunalPayments.Wpf.Infrastructure.Constans;
 using CommunalPayments.Wpf.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommunalPayments.Wpf.Models
 {
@@ -26,22 +22,46 @@ namespace CommunalPayments.Wpf.Models
 
         private static void CalculateMeteringDevices()
         {
-            var instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueHot);
-            var instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueHot);
-            var rateHeatCarrier = decimal.Parse(MainWindow.RateHotHeatCarrier);
-            var rateHeatEnergy = decimal.Parse(MainWindow.RateHotHeatEnergy);
-            var normPerMeter = decimal.Parse(MainWindow.NormPerCubicMeter);
+            try
+            {
+                decimal instrumentCurrentValue;
+                decimal instrumentPreviousValue;
+                decimal rateHeatCarrier;
+                decimal rateHeatEnergy;
+                decimal normPerMeter;
+                decimal consumptionValueHeatCarrier;
+                decimal consumptionValueHeatEnergy;
+                decimal serviceChargesHeatCarrier;
+                decimal serviceChargesHeatEnergy;
 
-            var consumptionValueHeatCarrier = instrumentCurrentValue - instrumentPreviousValue;
-            var consumptionValueHeatEnergy = consumptionValueHeatCarrier * normPerMeter;
+                checked
+                {
+                    instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueHot);
+                    instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueHot);
+                    rateHeatCarrier = decimal.Parse(MainWindow.RateHotHeatCarrier);
+                    rateHeatEnergy = decimal.Parse(MainWindow.RateHotHeatEnergy);
+                    normPerMeter = decimal.Parse(MainWindow.NormPerCubicMeter);
 
-            var serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
-            var serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
+                    consumptionValueHeatCarrier = instrumentCurrentValue - instrumentPreviousValue;
+                    consumptionValueHeatEnergy = consumptionValueHeatCarrier * normPerMeter;
 
-            MainWindow.ConsumptionValueHotHeatCarrier = consumptionValueHeatCarrier.ToString(CalculatedValuesFormatConstans.Common);
-            MainWindow.ConsumptionValueHotHeatEnergy = consumptionValueHeatEnergy.ToString(CalculatedValuesFormatConstans.Common);
-            MainWindow.ServiceChargesHotHeatCarrier = serviceChargesHeatCarrier.ToString(CalculatedValuesFormatConstans.Money);
-            MainWindow.ServiceChargesHotHeatEnergy = serviceChargesHeatEnergy.ToString(CalculatedValuesFormatConstans.Money);
+                    serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
+                    serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
+                }
+
+                SetValues(consumptionValueHeatCarrier, consumptionValueHeatEnergy, serviceChargesHeatCarrier,
+                    serviceChargesHeatEnergy);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
         private static void CalculateStandardVolume()
@@ -58,6 +78,12 @@ namespace CommunalPayments.Wpf.Models
             var serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
             var serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
 
+            SetValues(consumptionValueHeatCarrier, consumptionValueHeatEnergy, serviceChargesHeatCarrier, serviceChargesHeatEnergy);
+        }
+
+        private static void SetValues(decimal consumptionValueHeatCarrier, decimal consumptionValueHeatEnergy,
+            decimal serviceChargesHeatCarrier, decimal serviceChargesHeatEnergy)
+        {
             MainWindow.ConsumptionValueHotHeatCarrier = consumptionValueHeatCarrier.ToString(CalculatedValuesFormatConstans.Common);
             MainWindow.ConsumptionValueHotHeatEnergy = consumptionValueHeatEnergy.ToString(CalculatedValuesFormatConstans.Common);
             MainWindow.ServiceChargesHotHeatCarrier = serviceChargesHeatCarrier.ToString(CalculatedValuesFormatConstans.Money);

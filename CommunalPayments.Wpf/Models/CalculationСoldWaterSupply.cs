@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunalPayments.Wpf.Infrastructure.Constans;
+﻿using CommunalPayments.Wpf.Infrastructure.Constans;
 using CommunalPayments.Wpf.ViewModels;
+using System;
 
 namespace CommunalPayments.Wpf.Models
 {
@@ -26,28 +22,71 @@ namespace CommunalPayments.Wpf.Models
 
         private static void CalculateMeteringDevices()
         {
-            var instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueCold);
-            var instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueCold);
-            var rate = decimal.Parse(MainWindow.RateCold);
+            try
+            {
+                decimal instrumentCurrentValue;
+                decimal instrumentPreviousValue;
+                decimal rate;
+                decimal consumptionValue;
+                decimal serviceCharges;
 
-            var consumptionValue = instrumentCurrentValue - instrumentPreviousValue;
-            var serviceCharges = consumptionValue * rate;
+                checked
+                {
+                    instrumentCurrentValue = decimal.Parse(MainWindow.InstrumentCurrentValueCold);
+                    instrumentPreviousValue = decimal.Parse(MainWindow.InstrumentPreviousValueCold);
+                    rate = decimal.Parse(MainWindow.RateCold);
 
-            MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
-            MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
+                    consumptionValue = instrumentCurrentValue - instrumentPreviousValue;
+                    serviceCharges = consumptionValue * rate;
+                }
+
+                MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
+                MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
         private static void CalculateStandardVolume()
         {
-            var numberResidents = int.Parse(MainWindow.NumberResidents);
-            var normPerPerson = decimal.Parse(MainWindow.NormPerPersonCold);
-            var rate = decimal.Parse(MainWindow.RateCold);
+            try
+            {
+                int numberResidents;
+                decimal normPerPerson;
+                decimal rate;
+                decimal consumptionValue;
+                decimal serviceCharges;
 
-            var consumptionValue = numberResidents * normPerPerson;
-            var serviceCharges = consumptionValue * rate;
+                checked
+                {
+                    numberResidents = int.Parse(MainWindow.NumberResidents);
+                    normPerPerson = decimal.Parse(MainWindow.NormPerPersonCold);
+                    rate = decimal.Parse(MainWindow.RateCold);
+                    consumptionValue = numberResidents * normPerPerson;
+                    serviceCharges = consumptionValue * rate;
+                }
 
-            MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
-            MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
+                MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
+                MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
     }
 }
