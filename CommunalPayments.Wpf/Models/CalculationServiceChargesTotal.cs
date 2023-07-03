@@ -1,5 +1,6 @@
 ﻿using CommunalPayments.Wpf.Infrastructure.Constans;
 using CommunalPayments.Wpf.ViewModels;
+using System;
 
 namespace CommunalPayments.Wpf.Models
 {
@@ -9,14 +10,22 @@ namespace CommunalPayments.Wpf.Models
 
         public static void Calculate()
         {
-            var serviceChargesCold = decimal.Parse(MainWindow.ServiceChargesCold);
-            var serviceChargesHotHeatCarrier = decimal.Parse(MainWindow.ServiceChargesHotHeatCarrier);
-            var serviceChargesHotHeatEnergy = decimal.Parse(MainWindow.ServiceChargesHotHeatEnergy);
-            var serviceChargesEnergy = decimal.Parse(MainWindow.ServiceChargesEnergy);
+            try
+            {
+                var serviceChargesCold = decimal.Parse(MainWindow.ServiceChargesCold);
+                var serviceChargesHotHeatCarrier = decimal.Parse(MainWindow.ServiceChargesHotHeatCarrier);
+                var serviceChargesHotHeatEnergy = decimal.Parse(MainWindow.ServiceChargesHotHeatEnergy);
+                var serviceChargesEnergy = decimal.Parse(MainWindow.ServiceChargesEnergy);
 
-            var serviceChargesTotal = serviceChargesCold + serviceChargesHotHeatCarrier + serviceChargesHotHeatEnergy + serviceChargesEnergy;
+                decimal serviceChargesTotal = serviceChargesCold + serviceChargesHotHeatCarrier + serviceChargesHotHeatEnergy + serviceChargesEnergy;
 
-            MainWindow.ServiceChargesTotal = serviceChargesTotal.ToString(CalculatedValuesFormatConstans.Money);
+                MainWindow.ServiceChargesTotal = serviceChargesTotal.ToString(CalculatedValuesFormatConstans.Money);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
     }
 }
