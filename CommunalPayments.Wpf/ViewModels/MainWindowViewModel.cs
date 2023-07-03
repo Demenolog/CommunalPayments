@@ -612,7 +612,10 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnSaveCalculationExecute(object p)
         {
-            DatabaseControlService.InsertData();
+            var year = CalculationYear;
+            var month = CalculationMonth;
+
+            DatabaseControlService.InsertData(year, month);
         }
 
         #endregion SaveCalculation command

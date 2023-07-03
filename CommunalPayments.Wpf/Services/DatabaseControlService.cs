@@ -1,14 +1,13 @@
-﻿using System;
-using CommunalPayments.Common.DataContext.Sqlite;
+﻿using CommunalPayments.Common.DataContext.Sqlite;
 using CommunalPayments.Common.DataContext.Sqlite.Models;
 using CommunalPayments.Wpf.Infrastructure.Enums;
 using CommunalPayments.Wpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Linq;
 using System.Windows;
-using System.Windows.Markup;
 
 namespace CommunalPayments.Wpf.Services
 {
@@ -24,35 +23,42 @@ namespace CommunalPayments.Wpf.Services
             return connection;
         }
 
-        public static void InsertData()
+        public static void InsertData(string year, string month)
         {
-            var storedValues = new List<string>()
-            {
-                MainWindow.CalculationYear,
-                MainWindow.CalculationMonth,
-                MainWindow.ConsumptionValueCold,
-                MainWindow.ServiceChargesCold,
-                MainWindow.ConsumptionValueHotHeatCarrier,
-                MainWindow.ConsumptionValueHotHeatEnergy,
-                MainWindow.ServiceChargesHotHeatCarrier,
-                MainWindow.ServiceChargesHotHeatEnergy,
-                MainWindow.ConsumptionValueEnergyDay,
-                MainWindow.ConsumptionValueEnergyNight,
-                MainWindow.ConsumptionValueEnergyGeneral,
-                MainWindow.ServiceChargesEnergy,
-                MainWindow.ServiceChargesTotal
-            };
-
             using (var db = new ReceiptDb())
             {
-                var result = db.InsertData(storedValues);
-
-                if (DataViewWindow != null)
+                if (!db.IsDataExist(year, month))
                 {
-                    UpdateDataGrid();
-                }
+                    var storedValues = new List<string>()
+                    {
+                        MainWindow.CalculationYear,
+                        MainWindow.CalculationMonth,
+                        MainWindow.ConsumptionValueCold,
+                        MainWindow.ServiceChargesCold,
+                        MainWindow.ConsumptionValueHotHeatCarrier,
+                        MainWindow.ConsumptionValueHotHeatEnergy,
+                        MainWindow.ServiceChargesHotHeatCarrier,
+                        MainWindow.ServiceChargesHotHeatEnergy,
+                        MainWindow.ConsumptionValueEnergyDay,
+                        MainWindow.ConsumptionValueEnergyNight,
+                        MainWindow.ConsumptionValueEnergyGeneral,
+                        MainWindow.ServiceChargesEnergy,
+                        MainWindow.ServiceChargesTotal
+                    };
 
-                MessageBox.Show($"Команда завершилась с результатом - {result}");
+                    var result = db.InsertData(storedValues);
+
+                    if (DataViewWindow != null)
+                    {
+                        UpdateDataGrid();
+                    }
+
+                    MessageBox.Show($"Команда завершилась с результатом - {result}");
+                }
+                else
+                {
+                    MessageBox.Show("Данные за этот период уже существуют !");
+                }
             }
         }
 
@@ -66,7 +72,7 @@ namespace CommunalPayments.Wpf.Services
 
             using (var db = new ReceiptDb())
             {
-                if (db.IsPreviousDataExist(year, month))
+                if (db.IsDataExist(year, month))
                 {
                     var result = db.GetPreviousData(year, month);
 
