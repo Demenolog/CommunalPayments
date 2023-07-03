@@ -1,14 +1,9 @@
-﻿using CommunalPayments.Wpf.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunalPayments.Wpf.Infrastructure.Constans;
+﻿using CommunalPayments.Wpf.Infrastructure.Constans;
+using CommunalPayments.Wpf.ViewModels;
 
-namespace CommunalPayments.Wpf.Services
+namespace CommunalPayments.Wpf.Models
 {
-    public static class ServiceChargesTotalCalculationService
+    public static class CalculationServiceChargesTotal
     {
         private static readonly MainWindowViewModel MainWindow = new ViewModelLocator().MainWindowModel;
 

@@ -227,6 +227,9 @@
                 <Button Style="{StaticResource ButtonDefaultStyle}" 
                         Command="{Binding GetPreviousData}"
                         Content="Подставить предыдущие показания" />
+                <Button Style="{StaticResource ButtonDefaultStyle}" 
+                        Command="{Binding GetPreviousData}"
+                        Content="Очистить расчеты показаний" />
             </StackPanel>
         </StackPanel>
         <GroupBox Style="{StaticResource GroupBoxDefaultStyle}"

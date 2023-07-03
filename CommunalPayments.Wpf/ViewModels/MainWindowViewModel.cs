@@ -599,7 +599,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
             CalculationEnergySupply.Calculate(IsMeteringDevicesEnergySelected);
 
-            ServiceChargesTotalCalculationService.Calculate();
+            CalculationServiceChargesTotal.Calculate();
         }
 
         #endregion MakeCalculation command
@@ -652,6 +652,20 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion OpenDataViewWindow command
 
+        #region ClearCalculation command
+
+        public ICommand ClearCalculation { get; }
+
+        private bool CanClearCalculationExecuted(object p) => true;
+
+        private void OnClearCalculationExecute(object p)
+        {
+
+        }
+
+
+        #endregion ClearCalculation command
+
         #endregion Блок - Кнопоки
 
         public MainWindowViewModel()
@@ -663,6 +677,8 @@ namespace CommunalPayments.Wpf.ViewModels
             GetPreviousData = new LambdaCommand(OnGetPreviousDataExecute, CanGetPreviousDataExecuted);
 
             OpenDataViewWindow = new LambdaCommand(OnOpenDataViewWindowExecute, CanOpenDataViewWindowExecuted);
+
+            ClearCalculation = new LambdaCommand(OnClearCalculationExecute, CanClearCalculationExecuted);
         }
     }
 }

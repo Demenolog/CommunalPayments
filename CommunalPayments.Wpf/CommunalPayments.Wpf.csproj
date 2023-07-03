@@ -254,7 +254,7 @@
     <Compile Include="Services\ChildWindowService.cs" />
     <Compile Include="Services\DatabaseControlService.cs" />
     <Compile Include="Services\DataViewWindowService.cs" />
-    <Compile Include="Services\ServiceChargesTotalCalculationService.cs" />
+    <Compile Include="Models\CalculationServiceChargesTotal.cs" />
     <Compile Include="Services\EnumBindingSourceExtensionService.cs" />
     <Compile Include="Services\ServicesRegistrator.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
