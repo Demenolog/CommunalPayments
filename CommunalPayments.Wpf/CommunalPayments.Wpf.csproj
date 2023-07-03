@@ -259,6 +259,7 @@
     <Compile Include="Services\EnumBindingSourceExtensionService.cs" />
     <Compile Include="Services\ServicesRegistrator.cs" />
     <Compile Include="Services\TextBoxValidationService.cs" />
+    <Compile Include="Services\UserAlertService.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\DataViewWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
