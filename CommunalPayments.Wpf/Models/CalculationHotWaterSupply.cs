@@ -1,4 +1,5 @@
-﻿using CommunalPayments.Wpf.ViewModels;
+﻿using CommunalPayments.Wpf.Infrastructure.Constans;
+using CommunalPayments.Wpf.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,10 +38,10 @@ namespace CommunalPayments.Wpf.Models
             var serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
             var serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
 
-            MainWindow.ConsumptionValueHotHeatCarrier = consumptionValueHeatCarrier.ToString();
-            MainWindow.ConsumptionValueHotHeatEnergy = consumptionValueHeatEnergy.ToString();
-            MainWindow.ServiceChargesHotHeatCarrier = serviceChargesHeatCarrier.ToString();
-            MainWindow.ServiceChargesHotHeatEnergy = serviceChargesHeatEnergy.ToString();
+            MainWindow.ConsumptionValueHotHeatCarrier = consumptionValueHeatCarrier.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ConsumptionValueHotHeatEnergy = consumptionValueHeatEnergy.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesHotHeatCarrier = serviceChargesHeatCarrier.ToString(CalculatedValuesFormatConstans.Money);
+            MainWindow.ServiceChargesHotHeatEnergy = serviceChargesHeatEnergy.ToString(CalculatedValuesFormatConstans.Money);
         }
 
         private static void CalculateStandardVolume()
@@ -57,10 +58,10 @@ namespace CommunalPayments.Wpf.Models
             var serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
             var serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
 
-            MainWindow.ConsumptionValueHotHeatCarrier = consumptionValueHeatCarrier.ToString();
-            MainWindow.ConsumptionValueHotHeatEnergy = consumptionValueHeatEnergy.ToString();
-            MainWindow.ServiceChargesHotHeatCarrier = serviceChargesHeatCarrier.ToString();
-            MainWindow.ServiceChargesHotHeatEnergy = serviceChargesHeatEnergy.ToString();
+            MainWindow.ConsumptionValueHotHeatCarrier = consumptionValueHeatCarrier.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ConsumptionValueHotHeatEnergy = consumptionValueHeatEnergy.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesHotHeatCarrier = serviceChargesHeatCarrier.ToString(CalculatedValuesFormatConstans.Money);
+            MainWindow.ServiceChargesHotHeatEnergy = serviceChargesHeatEnergy.ToString(CalculatedValuesFormatConstans.Money);
         }
     }
 }

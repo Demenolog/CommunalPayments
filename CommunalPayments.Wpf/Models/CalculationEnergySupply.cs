@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunalPayments.Wpf.Infrastructure.Constans;
 
 namespace CommunalPayments.Wpf.Models
 {
@@ -39,9 +40,9 @@ namespace CommunalPayments.Wpf.Models
             var serviceChargesNight = consumptionValueNight * rateNight;
             var serviceChargesTotal = serviceChargesDay + serviceChargesNight;
 
-            MainWindow.ConsumptionValueEnergyDay = consumptionValueDay.ToString();
-            MainWindow.ConsumptionValueEnergyNight = consumptionValueNight.ToString();
-            MainWindow.ServiceChargesEnergy = serviceChargesTotal.ToString();
+            MainWindow.ConsumptionValueEnergyDay = consumptionValueDay.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ConsumptionValueEnergyNight = consumptionValueNight.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesEnergy = serviceChargesTotal.ToString(CalculatedValuesFormatConstans.Money);
         }
 
         private static void CalculateStandardVolume()
@@ -53,8 +54,8 @@ namespace CommunalPayments.Wpf.Models
             var consumptionValue = numberResidents * normPerPerson;
             var serviceCharges = consumptionValue * rateGeneral;
 
-            MainWindow.ConsumptionValueEnergyGeneral = consumptionValue.ToString();
-            MainWindow.ServiceChargesEnergy = serviceCharges.ToString();
+            MainWindow.ConsumptionValueEnergyGeneral = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesEnergy = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
         }
     }
 }

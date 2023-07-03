@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunalPayments.Wpf.Infrastructure.Constans;
 using CommunalPayments.Wpf.ViewModels;
 
 namespace CommunalPayments.Wpf.Models
@@ -32,8 +33,8 @@ namespace CommunalPayments.Wpf.Models
             var consumptionValue = instrumentCurrentValue - instrumentPreviousValue;
             var serviceCharges = consumptionValue * rate;
 
-            MainWindow.ConsumptionValueCold = consumptionValue.ToString();
-            MainWindow.ServiceChargesCold = serviceCharges.ToString();
+            MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
         }
 
         private static void CalculateStandardVolume()
@@ -45,8 +46,8 @@ namespace CommunalPayments.Wpf.Models
             var consumptionValue = numberResidents * normPerPerson;
             var serviceCharges = consumptionValue * rate;
 
-            MainWindow.ConsumptionValueCold = consumptionValue.ToString();
-            MainWindow.ServiceChargesCold = serviceCharges.ToString();
+            MainWindow.ConsumptionValueCold = consumptionValue.ToString(CalculatedValuesFormatConstans.Common);
+            MainWindow.ServiceChargesCold = serviceCharges.ToString(CalculatedValuesFormatConstans.Money);
         }
     }
 }

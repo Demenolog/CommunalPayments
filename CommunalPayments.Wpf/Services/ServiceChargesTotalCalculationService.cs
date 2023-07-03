@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommunalPayments.Wpf.Infrastructure.Constans;
 
 namespace CommunalPayments.Wpf.Services
 {
@@ -20,7 +21,7 @@ namespace CommunalPayments.Wpf.Services
 
             var serviceChargesTotal = serviceChargesCold + serviceChargesHotHeatCarrier + serviceChargesHotHeatEnergy + serviceChargesEnergy;
 
-            MainWindow.ServiceChargesTotal = serviceChargesTotal.ToString();
+            MainWindow.ServiceChargesTotal = serviceChargesTotal.ToString(CalculatedValuesFormatConstans.Money);
         }
     }
 }
