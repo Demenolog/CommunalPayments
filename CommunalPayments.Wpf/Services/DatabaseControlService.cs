@@ -31,6 +31,7 @@ namespace CommunalPayments.Wpf.Services
                 MainWindow.ServiceChargesHotHeatEnergy,
                 MainWindow.ConsumptionValueEnergyDay,
                 MainWindow.ConsumptionValueEnergyNight,
+                MainWindow.ConsumptionValueEnergyGeneral,
                 MainWindow.ServiceChargesEnergy,
                 MainWindow.ServiceChargesTotal
             };

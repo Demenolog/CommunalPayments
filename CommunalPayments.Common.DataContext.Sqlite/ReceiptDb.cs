@@ -24,8 +24,8 @@ namespace CommunalPayments.Common.DataContext.Sqlite
             {
                 var connection = GetConnection();
 
-                string insertQuery = @"INSERT INTO Receipt ([Год], [Месяц], [Счетчик ХВС], [Начисления за ХВС], [Счетчик ГВС ТН], [Счетчик ГВС ТЭ], [Начисления за ГВС ТН], [Начисления за ГВС ТЭ], [Счетчик ЭЭ день], [Счетчик ЭЭ ночь], [Начисления за ЭЭ], [Итого])
-                       VALUES (@Param1, @Param2, @Param3, @Param4, @Param5, @Param6, @Param7, @Param8, @Param9, @Param10 , @Param11, @Param12)";
+                string insertQuery = @"INSERT INTO Receipt ([Год], [Месяц], [Счетчик ХВС], [Начисления за ХВС], [Счетчик ГВС ТН], [Счетчик ГВС ТЭ], [Начисления за ГВС ТН], [Начисления за ГВС ТЭ], [Счетчик ЭЭ день], [Счетчик ЭЭ ночь], [Счетчик ЭЭ общий], [Начисления за ЭЭ], [Итого])
+                       VALUES (@Param1, @Param2, @Param3, @Param4, @Param5, @Param6, @Param7, @Param8, @Param9, @Param10 , @Param11, @Param12, @Param13)";
 
                 using (var command = new SQLiteCommand(insertQuery, connection))
                 {
