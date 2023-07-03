@@ -1,15 +1,9 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Data.SQLite;
-using System.Windows;
-using CommunalPayments.Wpf.Infrastructure.Commands;
+﻿using CommunalPayments.Wpf.Infrastructure.Commands;
 using CommunalPayments.Wpf.Infrastructure.Constans;
-using CommunalPayments.Wpf.ViewModels.Base;
-using System.Windows.Input;
 using CommunalPayments.Wpf.Models;
 using CommunalPayments.Wpf.Services;
-using CommunalPayments.Common.DataContext.Sqlite;
-using CommunalPayments.Wpf.Infrastructure.Enums;
+using CommunalPayments.Wpf.ViewModels.Base;
+using System.Windows.Input;
 
 namespace CommunalPayments.Wpf.ViewModels
 {
@@ -589,7 +583,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion Блок - Расчёт показаний
 
-        #region Блок - Кнопок
+        #region Блок - Кнопоки
 
         #region MakeCalculation command
 
@@ -618,7 +612,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnSaveCalculationExecute(object p)
         {
-           DatabaseControlService.InsertData();
+            DatabaseControlService.InsertData();
         }
 
         #endregion SaveCalculation command
@@ -639,7 +633,7 @@ namespace CommunalPayments.Wpf.ViewModels
 
         #endregion GetPreviousData command
 
-        #endregion Блок - Кнопок
+        #endregion Блок - Кнопоки
 
         public MainWindowViewModel()
         {
