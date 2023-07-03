@@ -25,7 +25,8 @@
                   Grid.Column="0"
                   Grid.Row="0"
                   Header="Общая информация">
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical"
+                        Margin="5">
                 <StackPanel Orientation="Horizontal">
                     <DockPanel>
                         <Label Content="Год:" />
@@ -43,10 +44,11 @@
                                   ItemsSource="{Binding Source={services:EnumBindingSourceExtensionService {x:Type enums:Months}}}" />
                     </DockPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal"
+                            Margin="5">
                     <Label Content="Количество проживающих:" />
                     <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                             Text="{Binding NumberResidents}" />
+                             Text="{Binding NumberResidents, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </StackPanel>
         </GroupBox>
@@ -75,12 +77,12 @@
                                     <DockPanel Grid.Row="0">
                                         <Label Content="Текущие показания:" />
                                         <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                             Text="{Binding InstrumentCurrentValueCold}" />
+                                             Text="{Binding InstrumentCurrentValueCold, UpdateSourceTrigger=PropertyChanged}" />
                                     </DockPanel>
                                     <DockPanel Grid.Row="1">
                                         <Label Content="Предыдущие показания:" />
                                         <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                             Text="{Binding InstrumentPreviousValueCold}" />
+                                             Text="{Binding InstrumentPreviousValueCold, UpdateSourceTrigger=PropertyChanged}" />
                                     </DockPanel>
                                 </Grid>
                             </StackPanel>
@@ -91,7 +93,7 @@
                                 <DockPanel IsEnabled="{Binding IsStandardVolumeColdSelected}">
                                     <Label Content="Норматив за человека:" />
                                     <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                         Text="{Binding NormPerPersonCold}" />
+                                             Text="{Binding NormPerPersonCold, UpdateSourceTrigger=PropertyChanged}" />
                                 </DockPanel>
                             </StackPanel>
                         </Grid>
@@ -115,7 +117,7 @@
                                     <DockPanel Grid.Row="0">
                                         <Label Content="Текущие показания:" />
                                         <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                             Text="{Binding InstrumentCurrentValueHot}" />
+                                             Text="{Binding InstrumentCurrentValueHot, UpdateSourceTrigger=PropertyChanged}" />
                                     </DockPanel>
                                     <DockPanel Grid.Row="1">
                                         <Label Content="Предыдущие показания:" />
@@ -132,14 +134,14 @@
                                        IsEnabled="{Binding IsStandardVolumeHotSelected}">
                                     <Label Content="«ГВС Теплоноситель»:" />
                                     <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                         Text="{Binding  NormPerPersonHotHeatCarrier}">
+                                             Text="{Binding NormPerPersonHotHeatCarrier, UpdateSourceTrigger=PropertyChanged}">
                                     </TextBox>
                                 </DockPanel>
                                 <DockPanel Grid.Row="1"
                                        IsEnabled="{Binding IsStandardVolumeHotSelected}">
                                     <Label Content="«ГВС Тепловая энергия»:" />
                                     <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                         Text="{Binding  NormPerPersonHotHeatEnergy}">
+                                             Text="{Binding  NormPerPersonHotHeatEnergy, UpdateSourceTrigger=PropertyChanged}">
                                     </TextBox>
                                 </DockPanel>
                             </StackPanel>
@@ -167,12 +169,12 @@
                                         <DockPanel Grid.Row="0">
                                             <Label Content="Текущие показания:" />
                                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                                 Text="{Binding InstrumentCurrentValueEnergyDay}" />
+                                                 Text="{Binding InstrumentCurrentValueEnergyDay, UpdateSourceTrigger=PropertyChanged}" />
                                         </DockPanel>
                                         <DockPanel Grid.Row="1">
                                             <Label Content="Предыдущие показания:" />
                                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                                 Text="{Binding InstrumentPreviousValueEnergyDay}" />
+                                                 Text="{Binding InstrumentPreviousValueEnergyDay, UpdateSourceTrigger=PropertyChanged}" />
                                         </DockPanel>
                                     </Grid>
                                     <Label Content="Ночная шкала" />
@@ -184,12 +186,12 @@
                                         <DockPanel Grid.Row="0">
                                             <Label Content="Текущие показания:" />
                                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                                 Text="{Binding InstrumentCurrentValueEnergyNight}" />
+                                                 Text="{Binding InstrumentCurrentValueEnergyNight, UpdateSourceTrigger=PropertyChanged}" />
                                         </DockPanel>
                                         <DockPanel Grid.Row="1">
                                             <Label Content="Предыдущие показания:" />
                                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                                 Text="{Binding InstrumentPreviousValueEnergyNight}" />
+                                                 Text="{Binding InstrumentPreviousValueEnergyNight, UpdateSourceTrigger=PropertyChanged}" />
                                         </DockPanel>
                                     </Grid>
                                 </StackPanel>
@@ -202,7 +204,7 @@
                                        IsEnabled="{Binding IsStandardVolumeEnergySelected}">
                                     <Label Content="Норматив за человека:" />
                                     <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                         Text="{Binding NormPerPersonEnergy}">
+                                             Text="{Binding NormPerPersonEnergy, UpdateSourceTrigger=PropertyChanged}">
                                     </TextBox>
                                 </DockPanel>
                             </StackPanel>
@@ -248,17 +250,17 @@
                         <DockPanel>
                             <Label Content="Объем потребления ХВС:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueCold}" />
+                                     Text="{Binding ConsumptionValueCold, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Тариф:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateCold}" />
+                                     Text="{Binding RateCold, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за ХВС:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesCold}" />
+                                     Text="{Binding ServiceChargesCold, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Горячее водоснабжение"
@@ -267,37 +269,37 @@
                         <DockPanel>
                             <Label Content="Объем потребления «ГВС Теплоноситель»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueHotHeatCarrier}" />
+                                     Text="{Binding ConsumptionValueHotHeatCarrier, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Объем потребления «ГВС Тепловая энергия»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueHotHeatEnergy}" />
+                                     Text="{Binding ConsumptionValueHotHeatEnergy, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesHotSelected}">
                             <Label Content="Норматив за подогрев 1 м^3:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding NormPerCubicMeter}" />
+                                     Text="{Binding NormPerCubicMeter, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Тариф «ГВС Теплоноситель»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateHotHeatCarrier}" />
+                                     Text="{Binding RateHotHeatCarrier, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Тариф «ГВС Тепловая энергия»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateHotHeatEnergy}" />
+                                     Text="{Binding RateHotHeatEnergy, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за «ГВС Теплоноситель»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesHotHeatCarrier}" />
+                                     Text="{Binding ServiceChargesHotHeatCarrier, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за «ГВС Тепловая энергия»:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesHotHeatEnergy}" />
+                                     Text="{Binding ServiceChargesHotHeatEnergy, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Электроэнергия"
@@ -306,37 +308,37 @@
                         <DockPanel IsEnabled="{Binding IsStandardVolumeEnergySelected}">
                             <Label Content="Общий объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueEnergyGeneral}" />
+                                     Text="{Binding ConsumptionValueEnergyGeneral, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Дневной объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueEnergyDay}" />
+                                     Text="{Binding ConsumptionValueEnergyDay, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Ночной объем потребления:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ConsumptionValueEnergyNight}" />
+                                     Text="{Binding ConsumptionValueEnergyNight, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Дневной тариф: " />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateEnergyDay}" />
+                                     Text="{Binding RateEnergyDay, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsMeteringDevicesEnergySelected}">
                             <Label Content="Ночной тариф:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateEnergyNight}" />
+                                     Text="{Binding RateEnergyNight, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel IsEnabled="{Binding IsStandardVolumeEnergySelected}">
                             <Label Content="Общий тариф:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding RateEnergyGeneral}" />
+                                     Text="{Binding RateEnergyGeneral, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                         <DockPanel>
                             <Label Content="Начисления за ЭЭ:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesEnergy}" />
+                                     Text="{Binding ServiceChargesEnergy, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                     </StackPanel>
                     <Label Content="Итого"
@@ -345,7 +347,7 @@
                         <DockPanel>
                             <Label Content="Общая сумма начислений:" />
                             <TextBox Style="{StaticResource TextBoxDefaultStyle}"
-                                     Text="{Binding ServiceChargesTotal}" />
+                                     Text="{Binding ServiceChargesTotal, UpdateSourceTrigger=PropertyChanged}" />
                         </DockPanel>
                     </StackPanel>
                 </StackPanel>

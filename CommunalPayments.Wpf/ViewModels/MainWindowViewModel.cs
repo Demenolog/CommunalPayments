@@ -64,7 +64,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string NumberResidents
         {
             get => _numberResidents;
-            set => SetField(ref _numberResidents, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntNumber(value))
+                {
+                    SetField(ref _numberResidents, value);
+                }
+            }
         }
 
         #endregion NumberResidents : string - Количество проживающих на момент расчёта
@@ -118,7 +124,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string InstrumentCurrentValueCold
         {
             get => _instrumentCurrentValueCold;
-            set => SetField(ref _instrumentCurrentValueCold, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _instrumentCurrentValueCold, value);
+                }
+            }
         }
 
         #endregion InstrumentCurrentValueCold : string - Текущие значения счётчика для ХВС
@@ -130,7 +142,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string InstrumentPreviousValueCold
         {
             get => _instrumentPreviousValueCold;
-            set => SetField(ref _instrumentPreviousValueCold, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _instrumentPreviousValueCold, value);
+                }
+            }
         }
 
         #endregion InstrumentPreviousValueCold : string - Предыдущие значение счётчика для ХВС
@@ -142,7 +160,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string NormPerPersonCold
         {
             get => _normPerPersonCold;
-            set => SetField(ref _normPerPersonCold, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _normPerPersonCold, value);
+                }
+            }
         }
 
         #endregion NormPerPersonCold : string - Норма потребления на человека для ХВС
@@ -192,7 +216,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string InstrumentCurrentValueHot
         {
             get => _instrumentCurrentValueHot;
-            set => SetField(ref _instrumentCurrentValueHot, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _instrumentCurrentValueHot, value);
+                }
+            }
         }
 
         #endregion InstrumentCurrentValueHot : string - Текущие значения счётчика для ГВС
@@ -216,7 +246,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string NormPerPersonHotHeatCarrier
         {
             get => _normPerPersonHotHeatCarrier;
-            set => SetField(ref _normPerPersonHotHeatCarrier, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _normPerPersonHotHeatCarrier, value);
+                }
+            }
         }
 
         #endregion NormPerPersonHotHeatCarrier : string - Норма потребления на человека для «ГВС Теплоноситель»
@@ -228,7 +264,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string NormPerPersonHotHeatEnergy
         {
             get => _normPerPersonHotHeatEnergy;
-            set => SetField(ref _normPerPersonHotHeatEnergy, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _normPerPersonHotHeatEnergy, value);
+                }
+            }
         }
 
         #endregion NormPerPersonHotHeatEnergy : string - Норма потребления на человека для «ГВС Теплоноситель»
@@ -240,7 +282,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string NormPerCubicMeter
         {
             get => _normPerCubicMeter;
-            set => SetField(ref _normPerCubicMeter, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _normPerCubicMeter, value);
+                }
+            }
         }
 
         #endregion NormPerCubicMeter : string - Норма подогрева на 1 метр кубический
@@ -290,7 +338,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string NormPerPersonEnergy
         {
             get => _normPerPersonEnergy;
-            set => SetField(ref _normPerPersonEnergy, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _normPerPersonEnergy, value);
+                }
+            }
         }
 
         #endregion NormPerPersonEnergy : string - Норма потребления на человека для ЭЭ
@@ -302,7 +356,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string InstrumentCurrentValueEnergyDay
         {
             get => _instrumentCurrentValueEnergyDay;
-            set => SetField(ref _instrumentCurrentValueEnergyDay, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _instrumentCurrentValueEnergyDay, value);
+                }
+            }
         }
 
         #endregion InstrumentCurrentValueEnergyDay : string - Текущие значения счётчика для ЭЭ - дневная шкала
@@ -314,7 +374,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string InstrumentPreviousValueEnergyDay
         {
             get => _instrumentPreviousValueEnergyDay;
-            set => SetField(ref _instrumentPreviousValueEnergyDay, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _instrumentPreviousValueEnergyDay, value);
+                }
+            }
         }
 
         #endregion InstrumentPreviousValueEnergyDay : string - Предыдущие значение счётчика для ЭЭ - дневная шкала
@@ -326,7 +392,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string InstrumentCurrentValueEnergyNight
         {
             get => _instrumentCurrentValueEnergyNight;
-            set => SetField(ref _instrumentCurrentValueEnergyNight, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _instrumentCurrentValueEnergyNight, value);
+                }
+            }
         }
 
         #endregion InstrumentCurrentValueEnergyNight : string - Текущие значения счётчика для ЭЭ - ночная шкала
@@ -338,7 +410,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string InstrumentPreviousValueEnergyNight
         {
             get => _instrumentPreviousValueEnergyNight;
-            set => SetField(ref _instrumentPreviousValueEnergyNight, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _instrumentPreviousValueEnergyNight, value);
+                }
+            }
         }
 
         #endregion InstrumentPreviousValueEnergyNight : string - Предыдущие значение счётчика для ЭЭ - ночная шкала
@@ -358,7 +436,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ConsumptionValueCold
         {
             get => _consumptionValueCold;
-            set => SetField(ref _consumptionValueCold, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _consumptionValueCold, value);
+                }
+            }
         }
 
         #endregion ConsumptionValueCold : string - Объём потребления ХВС
@@ -370,7 +454,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string RateCold
         {
             get => _rateCold;
-            set => SetField(ref _rateCold, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _rateCold, value);
+                }
+            }
         }
 
         #endregion RateCold : string - Тариф для ХВС
@@ -382,7 +472,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ServiceChargesCold
         {
             get => _serviceChargesCold;
-            set => SetField(ref _serviceChargesCold, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _serviceChargesCold, value);
+                }
+            }
         }
 
         #endregion ServiceChargesCold : string - Начисления за ХВС
@@ -398,7 +494,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ConsumptionValueHotHeatCarrier
         {
             get => _consumptionValueHotHeatCarrier;
-            set => SetField(ref _consumptionValueHotHeatCarrier, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _consumptionValueHotHeatCarrier, value);
+                }
+            }
         }
 
         #endregion ConsumptionValueHotHeatCarrier : string - Объем потребления «ГВС Теплоноситель»
@@ -410,7 +512,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ConsumptionValueHotHeatEnergy
         {
             get => _consumptionValueHotHeatEnergy;
-            set => SetField(ref _consumptionValueHotHeatEnergy, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _consumptionValueHotHeatEnergy, value);
+                }
+            }
         }
 
         #endregion ConsumptionValueHotHeatEnergy : string - Объем потребления «ГВС Тепловая энергия»
@@ -422,7 +530,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string HeatingStandard
         {
             get => _heatingStandard;
-            set => SetField(ref _heatingStandard, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _heatingStandard, value);
+                }
+            }
         }
 
         #endregion HeatingStandard : string - Норматив на подогрев
@@ -434,7 +548,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string RateHotHeatCarrier
         {
             get => _rateHotHeatCarrier;
-            set => SetField(ref _rateHotHeatCarrier, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _rateHotHeatCarrier, value);
+                }
+            }
         }
 
         #endregion RateHotHeatCarrier : string - Тариф для «ГВС Теплоноситель»
@@ -446,7 +566,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string RateHotHeatEnergy
         {
             get => _rateHotHeatEnergy;
-            set => SetField(ref _rateHotHeatEnergy, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _rateHotHeatEnergy, value);
+                }
+            }
         }
 
         #endregion RateHotHeatEnergy : string - Тариф для «ГВС Тепловая энергия»
@@ -458,7 +584,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ServiceChargesHotHeatCarrier
         {
             get => _serviceChargesHotHeatCarrier;
-            set => SetField(ref _serviceChargesHotHeatCarrier, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _serviceChargesHotHeatCarrier, value);
+                }
+            }
         }
 
         #endregion ServiceChargesHotHeatCarrier : string - Начисления за «ГВС Теплоноситель»
@@ -470,7 +602,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ServiceChargesHotHeatEnergy
         {
             get => _serviceChargesHotHeatEnergy;
-            set => SetField(ref _serviceChargesHotHeatEnergy, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _serviceChargesHotHeatEnergy, value);
+                }
+            }
         }
 
         #endregion ServiceChargesHotHeatEnergy : string - Начисления за «ГВС Теплоноситель»
@@ -486,7 +624,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ConsumptionValueEnergyGeneral
         {
             get => _consumptionValueEnergyGeneral;
-            set => SetField(ref _consumptionValueEnergyGeneral, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _consumptionValueEnergyGeneral, value);
+                }
+            }
         }
 
         #endregion ConsumptionValueEnergyGeneral : string - Общий объём потребления ЭЭ
@@ -498,7 +642,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ConsumptionValueEnergyDay
         {
             get => _consumptionValueEnergyDay;
-            set => SetField(ref _consumptionValueEnergyDay, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _consumptionValueEnergyDay, value);
+                }
+            }
         }
 
         #endregion ConsumptionValueEnergyDay : string - Дневной объём потребления ЭЭ
@@ -510,7 +660,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ConsumptionValueEnergyNight
         {
             get => _consumptionValueEnergyNight;
-            set => SetField(ref _consumptionValueEnergyNight, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _consumptionValueEnergyNight, value);
+                }
+            }
         }
 
         #endregion ConsumptionValueEnergyNight : string - Ночной объём потребления ЭЭ
@@ -522,7 +678,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string RateEnergyDay
         {
             get => _rateEnergyDay;
-            set => SetField(ref _rateEnergyDay, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _rateEnergyDay, value);
+                }
+            }
         }
 
         #endregion RateEnergyDay : string - Дневной тариф для ЭЭ
@@ -534,7 +696,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string RateEnergyNight
         {
             get => _rateEnergyNight;
-            set => SetField(ref _rateEnergyNight, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _rateEnergyNight, value);
+                }
+            }
         }
 
         #endregion RateEnergyNight : string - Ночной тариф для ЭЭ
@@ -546,7 +714,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string RateEnergyGeneral
         {
             get => _rateEnergyGeneral;
-            set => SetField(ref _rateEnergyGeneral, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _rateEnergyGeneral, value);
+                }
+            }
         }
 
         #endregion RateEnergyGeneral : string - Общий тариф для ЭЭ
@@ -558,7 +732,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ServiceChargesEnergy
         {
             get => _serviceChargesEnergy;
-            set => SetField(ref _serviceChargesEnergy, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _serviceChargesEnergy, value);
+                }
+            }
         }
 
         #endregion ServiceChargesEnergy : string - Начисления за ЭЭ
@@ -574,7 +754,13 @@ namespace CommunalPayments.Wpf.ViewModels
         public string ServiceChargesTotal
         {
             get => _serviceChargesTotal;
-            set => SetField(ref _serviceChargesTotal, value);
+            set
+            {
+                if (TextBoxValidationService.IsIntOrDecNumber(value))
+                {
+                    SetField(ref _serviceChargesTotal, value);
+                }
+            }
         }
 
         #endregion ServiceChargesTotal : string - Общая сумма начислений
@@ -644,9 +830,9 @@ namespace CommunalPayments.Wpf.ViewModels
 
         private void OnOpenDataViewWindowExecute(object p)
         {
-            DataViewWindowService.Create();
+            DataViewCreateWindowService.Create();
 
-            DataViewWindowService.Show();
+            DataViewCreateWindowService.Show();
         }
 
         #endregion OpenDataViewWindow command

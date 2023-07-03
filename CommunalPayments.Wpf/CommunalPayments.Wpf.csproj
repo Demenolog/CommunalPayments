@@ -254,10 +254,11 @@
     <Compile Include="Services\ChildWindowService.cs" />
     <Compile Include="Services\ClearCalculationService.cs" />
     <Compile Include="Services\DatabaseControlService.cs" />
-    <Compile Include="Services\DataViewWindowService.cs" />
+    <Compile Include="Services\DataViewCreateWindowService.cs" />
     <Compile Include="Models\CalculationServiceChargesTotal.cs" />
     <Compile Include="Services\EnumBindingSourceExtensionService.cs" />
     <Compile Include="Services\ServicesRegistrator.cs" />
+    <Compile Include="Services\TextBoxValidationService.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\DataViewWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
