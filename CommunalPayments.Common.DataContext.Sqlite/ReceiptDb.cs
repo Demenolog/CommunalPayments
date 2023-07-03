@@ -49,7 +49,7 @@ namespace CommunalPayments.Common.DataContext.Sqlite
             try
             {
                 var connection = GetConnection();
-                var columns = 4;
+                var numberColumns = 4;
 
                 var selectQuery = @"SELECT [Счетчик ХВС], [Счетчик ГВС ТН], [Счетчик ЭЭ день], [Счетчик ЭЭ ночь] FROM Receipt WHERE [Год] = @Year AND [Месяц] = @Month";
 
@@ -64,7 +64,7 @@ namespace CommunalPayments.Common.DataContext.Sqlite
                         {
                             var result = new List<string>();
 
-                            for (int i = 0; i < columns; i++)
+                            for (int i = 0; i < numberColumns; i++)
                             {
                                 var value = reader[i].ToString();
 
