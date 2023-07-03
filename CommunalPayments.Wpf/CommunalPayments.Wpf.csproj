@@ -248,6 +248,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Services\ChildWindowService.cs" />
     <Compile Include="Services\DatabaseControlService.cs" />
+    <Compile Include="Services\DataViewWindowService.cs" />
     <Compile Include="Services\ServiceChargesTotalCalculationService.cs" />
     <Compile Include="Services\EnumBindingSourceExtensionService.cs" />
     <Compile Include="Services\ServicesRegistrator.cs" />
