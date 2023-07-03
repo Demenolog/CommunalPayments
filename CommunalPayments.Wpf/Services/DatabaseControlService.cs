@@ -85,12 +85,12 @@ namespace CommunalPayments.Wpf.Services
                     }
                     else
                     {
-                        MessageBox.Show("Ошибка");
+                        UserAlertService.Error("Возникла ошибка");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Данных нет");
+                    UserAlertService.Information("Данные отсутствуют");
                 }
             }
         }
