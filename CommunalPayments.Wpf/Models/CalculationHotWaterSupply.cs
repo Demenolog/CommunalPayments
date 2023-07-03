@@ -66,19 +66,46 @@ namespace CommunalPayments.Wpf.Models
 
         private static void CalculateStandardVolume()
         {
-            var numberResidents = int.Parse(MainWindow.NumberResidents);
-            var normPerPersonHeatCarrier = decimal.Parse(MainWindow.NormPerPersonHotHeatCarrier);
-            var normPerPersonHeatEnergy = decimal.Parse(MainWindow.NormPerPersonHotHeatEnergy);
-            var rateHeatCarrier = decimal.Parse(MainWindow.RateHotHeatCarrier);
-            var rateHeatEnergy = decimal.Parse(MainWindow.RateHotHeatEnergy);
+            try
+            {
+                int numberResidents;
+                decimal normPerPersonHeatCarrier;
+                decimal normPerPersonHeatEnergy;
+                decimal rateHeatCarrier;
+                decimal rateHeatEnergy;
+                decimal consumptionValueHeatCarrier;
+                decimal consumptionValueHeatEnergy;
+                decimal serviceChargesHeatCarrier;
+                decimal serviceChargesHeatEnergy;
 
-            var consumptionValueHeatCarrier = numberResidents * normPerPersonHeatCarrier;
-            var consumptionValueHeatEnergy = numberResidents * normPerPersonHeatEnergy;
+                checked
+                {
+                    numberResidents = int.Parse(MainWindow.NumberResidents);
+                    normPerPersonHeatCarrier = decimal.Parse(MainWindow.NormPerPersonHotHeatCarrier);
+                    normPerPersonHeatEnergy = decimal.Parse(MainWindow.NormPerPersonHotHeatEnergy);
+                    rateHeatCarrier = decimal.Parse(MainWindow.RateHotHeatCarrier);
+                    rateHeatEnergy = decimal.Parse(MainWindow.RateHotHeatEnergy);
 
-            var serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
-            var serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
+                    consumptionValueHeatCarrier = numberResidents * normPerPersonHeatCarrier;
+                    consumptionValueHeatEnergy = numberResidents * normPerPersonHeatEnergy;
 
-            SetValues(consumptionValueHeatCarrier, consumptionValueHeatEnergy, serviceChargesHeatCarrier, serviceChargesHeatEnergy);
+                    serviceChargesHeatCarrier = consumptionValueHeatCarrier * rateHeatCarrier;
+                    serviceChargesHeatEnergy = consumptionValueHeatEnergy * rateHeatEnergy;
+                }
+
+                SetValues(consumptionValueHeatCarrier, consumptionValueHeatEnergy, serviceChargesHeatCarrier,
+                    serviceChargesHeatEnergy);
+            }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
         private static void SetValues(decimal consumptionValueHeatCarrier, decimal consumptionValueHeatEnergy,
