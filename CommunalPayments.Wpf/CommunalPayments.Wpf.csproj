@@ -246,6 +246,7 @@
     <Compile Include="Models\CalculationHotWaterSupply.cs" />
     <Compile Include="Models\CalculationСoldWaterSupply.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Services\ChildWindowService.cs" />
     <Compile Include="Services\DatabaseControlService.cs" />
     <Compile Include="Services\ServiceChargesTotalCalculationService.cs" />
     <Compile Include="Services\EnumBindingSourceExtensionService.cs" />
