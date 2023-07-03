@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CommunalPayments.Wpf
+namespace CommunalPayments.Wpf.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DataViewWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DataViewWindow : Window
     {
-        public MainWindow()
+        public DataViewWindow()
         {
             InitializeComponent();
         }
