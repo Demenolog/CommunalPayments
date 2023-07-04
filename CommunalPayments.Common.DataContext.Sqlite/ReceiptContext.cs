@@ -29,5 +29,29 @@ namespace CommunalPayments.Common.DataContext.Sqlite
 
             return connection;
         }
+
+        /*
+         *
+         *
+         * CREATE TABLE Receipt (
+           Id                     INTEGER PRIMARY KEY
+           NOT NULL,
+           Год                    TEXT    NOT NULL,
+           Месяц                  TEXT    NOT NULL,
+           [Счетчик ХВС]          TEXT,
+           [Начисления за ХВС]    TEXT    NOT NULL,
+           [Счетчик ГВС ТН]       TEXT,
+           [Счетчик ГВС ТЭ]       TEXT,
+           [Начисления за ГВС ТН] TEXT    NOT NULL,
+           [Начисления за ГВС ТЭ] TEXT    NOT NULL,
+           [Счетчик ЭЭ день]      TEXT,
+           [Счетчик ЭЭ ночь]      TEXT,
+           [Счетчик ЭЭ общий]     TEXT,
+           [Начисления за ЭЭ]     TEXT    NOT NULL,
+           Итого                  TEXT    NOT NULL
+           );
+         *
+         *
+         */
     }
 }
